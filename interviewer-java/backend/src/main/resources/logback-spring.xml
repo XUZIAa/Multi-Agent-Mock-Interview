@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  stdout 是留给握手行的专用通道：Tauri 逐行扫 stdout 找 INTERVIEWER_RPC 前缀。
+  任何日志掉进 stdout 都可能被当成握手行的干扰，所以控制台输出一律走 stderr，
+  Tauri 那边把 stderr 当日志转发（sidecar.rs 的 drain 就是这么做的）。
+-->
+<configuration>
+  <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-7level [%logger{28}] %msg%n"/>
+  <!-- 由 BackendApplication 在 Spring 启动前写入，拿不到时退回工作目录 -->
+  <property name="LOG_DIR" value="${interviewer.logDir:-logs}"/>
+
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.err</target>
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_DIR}/app.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${LOG_DIR}/app.log.%i</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>3</maxIndex>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>4MB</maxFileSize>
+    </triggeringPolicy>
+    <encoder>
+      <pattern>${PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDERR"/>
+    <appender-ref ref="FILE"/>
+  </root>
+
+  <logger name="com.interviewer" level="INFO"/>
+
+  <!-- 吵闹的第三方。对应 Python 版 logging_setup 里那份静音清单 -->
+  <logger name="org.apache.pdfbox" level="WARN"/>
+  <logger name="org.apache.fontbox" level="WARN"/>
+  <logger name="org.apache.poi" level="WARN"/>
+  <logger name="com.alibaba.csp.sentinel" level="WARN"/>
+  <logger name="com.alibaba.nacos" level="WARN"/>
+  <logger name="org.mybatis" level="WARN"/>
+  <logger name="com.baomidou.mybatisplus" level="WARN"/>
+  <logger name="io.netty" level="WARN"/>
+  <logger name="reactor.netty" level="WARN"/>
+  <logger name="org.springframework.web.socket" level="WARN"/>
+</configuration>

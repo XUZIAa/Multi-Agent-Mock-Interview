@@ -1,0 +1,104 @@
+{
+ "ANNOTATE_SYSTEM": {
+  "chars": 370,
+  "ends_with_newline": false,
+  "file": "annotate_system.txt",
+  "sha256": "a0c3b4d851524e129a072dde27abc3d3ca5e8048acddb95423558858f5226e04"
+ },
+ "BANK_SOFT_SYSTEM": {
+  "chars": 460,
+  "ends_with_newline": false,
+  "file": "bank_soft_system.txt",
+  "sha256": "415ca4a144a5fc42b5fff64befebeee4a5c346d373fc147d19b44707588c15aa"
+ },
+ "BANK_TECH_SYSTEM": {
+  "chars": 864,
+  "ends_with_newline": false,
+  "file": "bank_tech_system.txt",
+  "sha256": "a00a4618e4d1fcaecb61f48eeea78ebeb61a40c3066a8316b538487141d8ac16"
+ },
+ "CODE_PROBE_SYSTEM": {
+  "chars": 454,
+  "ends_with_newline": false,
+  "file": "code_probe_system.txt",
+  "sha256": "68fc1e429340b232ff713f2363daf225f8db688014917ab45d199283afe18663"
+ },
+ "CODING_COMPOSE_SYSTEM": {
+  "chars": 1009,
+  "ends_with_newline": false,
+  "file": "coding_compose_system.txt",
+  "sha256": "5f18ceec3aed646da1f93ba38be49b074b92ceadccdee240831913a9144f8eaf"
+ },
+ "COPILOT_SYSTEM": {
+  "chars": 309,
+  "ends_with_newline": false,
+  "file": "copilot_system.txt",
+  "sha256": "eb46eb8059ff900438ed7005013f4cef41f7b36571068b77cffa8eac0a977c1b"
+ },
+ "DIRECTOR_SYSTEM": {
+  "chars": 3895,
+  "ends_with_newline": false,
+  "file": "director_system.txt",
+  "sha256": "a54deab9c1100c4b72b670f09f672f8cd4ac30edf9c032ecb3f9a25b5ed036b8"
+ },
+ "GAP_ANALYSIS": {
+  "chars": 768,
+  "ends_with_newline": false,
+  "file": "gap_analysis.txt",
+  "sha256": "bb8584937a67a2cfcf74d0c6c39e7e710ba1788bb65475675b5a893959e2a3e0"
+ },
+ "GUARD_SYSTEM": {
+  "chars": 551,
+  "ends_with_newline": false,
+  "file": "guard_system.txt",
+  "sha256": "1d752b2fa07eb7e695c755ca17f50221c4fc89a8a0c133cf91cd6dc46e2e518a"
+ },
+ "IMPROVEMENT_SYSTEM": {
+  "chars": 516,
+  "ends_with_newline": false,
+  "file": "improvement_system.txt",
+  "sha256": "fe9205571c2995a53ec8e96a0510c69764bd1898222ce7cc4a1254a5e0551811"
+ },
+ "JD_EXTRACT": {
+  "chars": 193,
+  "ends_with_newline": false,
+  "file": "jd_extract.txt",
+  "sha256": "647548fbd1b40bbbba00eae8e73d51d676ad6b0afba02876b77f3ddee80df6bb"
+ },
+ "JD_SYNTH": {
+  "chars": 441,
+  "ends_with_newline": false,
+  "file": "jd_synth.txt",
+  "sha256": "52f07ea62199c6f55495c15bd3d405fccca22c4e914258d744195e52486796fb"
+ },
+ "MISTAKES_SYSTEM": {
+  "chars": 435,
+  "ends_with_newline": false,
+  "file": "mistakes_system.txt",
+  "sha256": "80f415ad968c74dae611de6f0f7c99d7ba40d7d9c31cede820cac56b08f94181"
+ },
+ "RESUME_EXTRACT": {
+  "chars": 296,
+  "ends_with_newline": false,
+  "file": "resume_extract.txt",
+  "sha256": "398603e5e41a9e2df2b61a1774a2448b38577f9eea276c0f722f09c9e2792671"
+ },
+ "REVIEW_SCORE_SYSTEM": {
+  "chars": 660,
+  "ends_with_newline": false,
+  "file": "review_score_system.txt",
+  "sha256": "76bb2328c8dd7b44d9844dcb4ed57e2d8d170a98e0d7cad0a62d339fa7bc01d3"
+ },
+ "REWRITE_SYSTEM": {
+  "chars": 532,
+  "ends_with_newline": false,
+  "file": "rewrite_system.txt",
+  "sha256": "73932179c2b3f46cda895fbf89536e4a2a2a7b82a6c68941010e7bb3371c3649"
+ },
+ "STAR_SYSTEM": {
+  "chars": 355,
+  "ends_with_newline": false,
+  "file": "star_system.txt",
+  "sha256": "ab9f9cba6dc0a02f29d646f4ea167499a65b04511963f029062c09921d7bc00a"
+ }
+}

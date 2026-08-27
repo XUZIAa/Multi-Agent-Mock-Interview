@@ -1,0 +1,294 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 设计基调：中性灰阶承担 95% 的界面，单一主色只用于强调。
+   之前 Qt 版显廉价，很大程度是到处上饱和色、缺少层级过渡。 */
+:root {
+  --radius: 0.75rem;
+
+  /* 底色压到可辨的冷灰，卡面留纯白：分层靠这道明度差，不靠阴影 */
+  --background: oklch(0.973 0.003 265);
+  --foreground: oklch(0.205 0.02 265);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.02 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.02 265);
+
+  --primary: oklch(0.53 0.19 275);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.968 0.004 265);
+  --secondary-foreground: oklch(0.31 0.02 265);
+
+  --muted: oklch(0.968 0.004 265);
+  /* 0.53 在新底色上只有 4.24:1，压到 0.50 换来 4.8:1*/
+  --muted-foreground: oklch(0.5 0.015 265);
+
+  --accent: oklch(0.955 0.012 275);
+  --accent-foreground: oklch(0.35 0.06 275);
+
+  --destructive: oklch(0.58 0.21 20);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.62 0.15 158);
+  --warning: oklch(0.72 0.16 70);
+
+  /* 边框要看得见才有商业感，太淡会糊成一片 */
+  --border: oklch(0.923 0.005 265);
+  --input: oklch(0.905 0.006 265);
+  --ring: oklch(0.53 0.19 275);
+
+  --candidate: oklch(0.62 0.15 158);
+  --interviewer: oklch(0.53 0.19 275);
+
+  --chart-1: oklch(0.53 0.19 275);
+  --chart-2: oklch(0.62 0.15 158);
+  --chart-3: oklch(0.72 0.16 70);
+  --chart-4: oklch(0.58 0.21 20);
+  --chart-5: oklch(0.6 0.13 220);
+}
+
+.dark {
+  --background: oklch(0.148 0.009 265);
+  --foreground: oklch(0.96 0.004 265);
+
+  --card: oklch(0.205 0.014 265);
+  --card-foreground: oklch(0.96 0.004 265);
+  --popover: oklch(0.205 0.014 265);
+  --popover-foreground: oklch(0.96 0.004 265);
+
+  --primary: oklch(0.68 0.17 275);
+  --primary-foreground: oklch(0.16 0.012 265);
+
+  --secondary: oklch(0.26 0.016 265);
+  --secondary-foreground: oklch(0.96 0.004 265);
+
+  --muted: oklch(0.26 0.016 265);
+  --muted-foreground: oklch(0.68 0.014 265);
+
+  --accent: oklch(0.29 0.03 275);
+  --accent-foreground: oklch(0.92 0.02 275);
+
+  --destructive: oklch(0.65 0.2 20);
+  --destructive-foreground: oklch(0.16 0.012 265);
+  --success: oklch(0.7 0.15 158);
+  --warning: oklch(0.78 0.15 70);
+
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.68 0.17 275);
+
+  --candidate: oklch(0.7 0.15 158);
+  --interviewer: oklch(0.68 0.17 275);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-candidate: var(--candidate);
+  --color-interviewer: var(--interviewer);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Inter", "Segoe UI Variable", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", system-ui,
+      sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* 桌面应用不该像网页那样能整体拖选 */
+    user-select: none;
+    overflow: hidden;
+  }
+
+  input,
+  textarea,
+  [contenteditable],
+  .selectable {
+    user-select: text;
+  }
+
+  /* 选区与光标默认取浏览器蓝，不属于任何设计系统 */
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 20%, transparent);
+  }
+
+  input,
+  textarea,
+  [contenteditable] {
+    caret-color: var(--primary);
+  }
+
+  /* 数据里的数字必须等宽，否则刷新时列会横跳 */
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: color-mix(in oklab, var(--muted-foreground) 28%, transparent);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--muted-foreground) 45%, transparent);
+  }
+}
+
+/* 导出走 WebView2 的打印引擎。屏幕布局是「外壳固定 + 内容区独立滚动」，
+   不解除这套约束的话打印只会输出可视的那一屏，复盘报告恰好是最长的页面。 */
+@media print {
+  /* 报告是纸质产物，深色主题下直接打印会得到黑底，强制走文档配色 */
+  .dark {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.21 0.02 265);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.21 0.02 265);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.21 0.02 265);
+    --primary: oklch(0.53 0.19 275);
+    --primary-foreground: oklch(0.99 0 0);
+    --secondary: oklch(0.968 0.004 265);
+    --secondary-foreground: oklch(0.31 0.02 265);
+    --muted: oklch(0.968 0.004 265);
+    --muted-foreground: oklch(0.45 0.015 265);
+    --accent: oklch(0.955 0.012 275);
+    --accent-foreground: oklch(0.35 0.06 275);
+    --destructive: oklch(0.58 0.21 20);
+    --success: oklch(0.55 0.15 158);
+    --warning: oklch(0.62 0.16 70);
+    --border: oklch(0.88 0.005 265);
+    --input: oklch(0.88 0.005 265);
+    --candidate: oklch(0.55 0.15 158);
+    --interviewer: oklch(0.53 0.19 275);
+  }
+
+  @page {
+    margin: 14mm 12mm;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  [data-print="hide"],
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+
+  /* 撤掉整条 flex + overflow 链，让内容按文档流铺开分页 */
+  [data-print="flow"] {
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    flex: none !important;
+  }
+
+  /* 屏幕上用 truncate 防溢出，纸上必须完整 */
+  .truncate {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+  }
+
+  [data-slot="card"] {
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* 向导画布：三团极淡的光晕叠出柔和渐变。数值刻意压低，
+   它是背景而不是主角，盖过卡片就失去意义了。 */
+.wizard-canvas {
+  background:
+    radial-gradient(68% 52% at 10% 6%, oklch(0.88 0.062 305 / 0.5), transparent 72%),
+    radial-gradient(62% 48% at 90% 80%, oklch(0.9 0.058 165 / 0.46), transparent 72%),
+    radial-gradient(54% 58% at 64% 30%, oklch(0.91 0.05 250 / 0.38), transparent 74%);
+}
+
+.dark .wizard-canvas {
+  background:
+    radial-gradient(68% 52% at 10% 6%, oklch(0.5 0.09 305 / 0.22), transparent 72%),
+    radial-gradient(62% 48% at 90% 80%, oklch(0.52 0.08 165 / 0.2), transparent 72%),
+    radial-gradient(54% 58% at 64% 30%, oklch(0.54 0.08 250 / 0.16), transparent 74%);
+}
+
+/* 关于页的方格底纹：灰底压白线。线要细到只在余光里成立，
+   一旦看得清就会跟正文抢注意力。 */
+.grid-paper {
+  background-color: oklch(0.952 0.003 265);
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.85) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.85) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.dark .grid-paper {
+  background-color: oklch(0.168 0.01 265);
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+}
