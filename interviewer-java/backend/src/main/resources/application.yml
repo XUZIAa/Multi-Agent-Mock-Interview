@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: interviewer-backend
+  # stdout 只走握手行，banner 会污染它
+  main:
+    banner-mode: off
+    web-application-type: servlet
+
+  jackson:
+    # 前端契约是 snake_case（api-schema.d.ts 里全是 session_id / overall_score 这种），
+    # 提示词里要求模型输出的键名同样是 snake_case，两边一致，所以全局改名策略
+    property-naming-strategy: SNAKE_CASE
+    # FastAPI 序列化响应时会输出全部字段，生成的 TS 因此全是必填。保持一致
+    default-property-inclusion: always
+    deserialization:
+      fail-on-unknown-properties: false
+      accept-single-value-as-array: true
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+
+  cloud:
+    # Sentinel 只做本机限流，不连控制台、不注册。用户的模型额度是真金白银，
+    # 编排出 bug 导致连环调用时要拦得住
+    sentinel:
+      eager: true
+      transport:
+        dashboard: ""
+      log:
+        dir: ${interviewer.logDir:logs}/sentinel
+
+server:
+  # 端口由 BackendApplication 按 --port 覆盖；0 表示交给系统分配
+  port: 0
+  address: 127.0.0.1
+  shutdown: graceful
+  error:
+    include-message: always
+
+mybatis-plus:
+  # SQLite 没有日期类型，时间戳全走 UtcStampTypeHandler 读写文本
+  type-handlers-package: com.interviewer.data
+  configuration:
+    map-underscore-to-camel-case: true
+    # 默认 OTHER，sqlite-jdbc 不认；它的 setNull 本来就忽略类型，给个合法枚举即可
+    jdbc-type-for-null: NULL
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      table-underline: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    # 用 3.0 而非 3.1：swagger-core 2.2.19 在 3.1 模式下不输出 nullable，也不把它转成
+    # type 数组，可空字段会静默变成必填——前端于是把「还没评分」显示成 0 分
+    version: openapi_3_0
+  swagger-ui:
+    enabled: false
+
+# 编排参数的默认值在 OrchestrationSettings 里，这里只放不进用户配置的工程量
+interviewer:
+  llm:
+    # 对应 Python 版 llm/router.py 的 _ROLE_TIMEOUTS
+    timeout:
+      director: 20s
+      analyst: 240s
+      guard: 8s
+      assist: 15s
+    # 单位时间内允许的模型调用次数，Sentinel 按角色建规则
+    qps:
+      director: 4
+      analyst: 2
+      guard: 8
+      assist: 4
+  voice:
+    # 语音 sidecar（Python）由 Java 侧拉起并做握手。位置来自外壳设的
+    # INTERVIEWER_VOICE_EXE（打包版）或 INTERVIEWER_VOICE_DIR（源码），这里不给默认值：
+    # 猜错路径只会得到「进程起不来」这种没有指向性的错误
+    handshake-timeout: 30s

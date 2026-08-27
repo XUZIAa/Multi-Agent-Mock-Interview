@@ -1,0 +1,4425 @@
+{
+ "openapi": "3.0.1",
+ "info": {
+  "title": "AI 模拟面试 本机接口",
+  "description": "桌面前端与后端之间的本机通道。仅监听回环地址，需 token 认证。",
+  "version": "1"
+ },
+ "servers": [
+  {
+   "url": "http://127.0.0.1:11334",
+   "description": "Generated server url"
+  }
+ ],
+ "paths": {
+  "/review/generate": {
+   "post": {
+    "tags": [
+     "review"
+    ],
+    "operationId": "generate",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/GenerateReviewBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/ReviewReport"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/recovery/scan": {
+   "post": {
+    "tags": [
+     "recovery"
+    ],
+    "operationId": "scan",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/InterruptedSession"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/session": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "buildSession",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/BuildSessionBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/InterviewState"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/resume": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "ingestResume",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IngestPathBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StoredResume"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/job-text": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "ingestJobText",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IngestJobTextBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StoredJob"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/job-synthesize": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "synthesizeJob",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SynthesizeJobBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StoredJob"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/job-file": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "ingestJobFile",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IngestPathBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StoredJob"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/prepare/diagnose": {
+   "post": {
+    "tags": [
+     "prepare"
+    ],
+    "operationId": "diagnose",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/DiagnoseBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StoredGap"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas": {
+   "get": {
+    "tags": [
+     "personas"
+    ],
+    "operationId": "list",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/PersonaContract"
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "personas"
+    ],
+    "operationId": "save",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PersonaContract"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/PersonaContract"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/unique-name": {
+   "post": {
+    "tags": [
+     "personas"
+    ],
+    "operationId": "uniqueName",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/UniqueNameBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/mistakes/mastered": {
+   "post": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "setMastered",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SetMasteredBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/wait-finished": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "waitFinished",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/stop": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "stop",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/StopInterviewBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/StopResult"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/start": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "start",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/StartInterviewBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/mute": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "mute",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/MuteBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/interrupt": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "interrupt",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/hint": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "hint",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/HintBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/finish-early": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "finishEarly",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/engine/code": {
+   "post": {
+    "tags": [
+     "engine"
+    ],
+    "operationId": "submitCode",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SubmitCodeBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/config": {
+   "get": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "get",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/AppSettings"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "save_1",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AppSettings"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/config/probe": {
+   "post": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "probe",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ProbeBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/ProbeOutcome"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/config/keys": {
+   "post": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "setKey",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ApiKeyBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/coding/run": {
+   "post": {
+    "tags": [
+     "coding"
+    ],
+    "operationId": "run",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RunCodeBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/RunOutcome"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/coding/judge": {
+   "post": {
+    "tags": [
+     "coding"
+    ],
+    "operationId": "judge",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/JudgeCodeBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/JudgeOutcome"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/coding/challenge": {
+   "post": {
+    "tags": [
+     "coding"
+    ],
+    "operationId": "challenge",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ComposeChallengeBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/CodingChallenge"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/trends/overall": {
+   "get": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "overall",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 100,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/TrendPoint"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/trends/dimensions": {
+   "get": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "dimensions",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 100,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 20
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": {
+          "type": "array",
+          "items": {
+           "$ref": "#/components/schemas/TrendPoint"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sessions": {
+   "get": {
+    "tags": [
+     "sessions"
+    ],
+    "operationId": "list_1",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 200,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 50
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/SessionSummary"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sessions/{session_id}/turns": {
+   "get": {
+    "tags": [
+     "sessions"
+    ],
+    "operationId": "turns",
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/TurnRecord"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sessions/{session_id}/status": {
+   "get": {
+    "tags": [
+     "sessions"
+    ],
+    "operationId": "status",
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/SessionStatus"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sessions/{session_id}/state": {
+   "get": {
+    "tags": [
+     "sessions"
+    ],
+    "operationId": "state",
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/InterviewState"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/sessions/stats": {
+   "get": {
+    "tags": [
+     "sessions"
+    ],
+    "operationId": "stats",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/GlobalStats"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/review/{session_id}": {
+   "get": {
+    "tags": [
+     "review"
+    ],
+    "operationId": "load",
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/ReviewReport"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/mistakes": {
+   "get": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "list_2",
+    "parameters": [
+     {
+      "name": "include_mastered",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "default": false
+      }
+     },
+     {
+      "name": "topic",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "default": ""
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 500,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 200
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/StoredMistake"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/mistakes/topics": {
+   "get": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "topics",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/mistakes/counts": {
+   "get": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "counts",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/MistakeCounts"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/library/resumes": {
+   "get": {
+    "tags": [
+     "library"
+    ],
+    "operationId": "resumes",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 200,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 30
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/StoredResume"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/library/jobs": {
+   "get": {
+    "tags": [
+     "library"
+    ],
+    "operationId": "jobs",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "maximum": 200,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "default": 30
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/StoredJob"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/info": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "operationId": "info",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/ServerInfo"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/config/keys/{provider_key}": {
+   "get": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "keyPresent",
+    "parameters": [
+     {
+      "name": "provider_key",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": {
+          "type": "boolean"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/catalog": {
+   "get": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "catalog",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Catalog"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/audio/devices": {
+   "get": {
+    "tags": [
+     "config"
+    ],
+    "operationId": "audioDevices",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/AudioDevices"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/{persona_id}": {
+   "delete": {
+    "tags": [
+     "personas"
+    ],
+    "operationId": "delete",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/mistakes/{mistake_id}": {
+   "delete": {
+    "tags": [
+     "reviews"
+    ],
+    "operationId": "delete_1",
+    "parameters": [
+     {
+      "name": "mistake_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "*/*": {
+        "schema": {
+         "$ref": "#/components/schemas/Ok"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "GenerateReviewBody": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     }
+    }
+   },
+   "AbandonedSkill": {
+    "type": "object",
+    "properties": {
+     "skill": {
+      "type": "string"
+     },
+     "domain": {
+      "type": "string"
+     },
+     "abandoned_at_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "attempts": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "skill",
+     "domain",
+     "abandoned_at_depth",
+     "attempts"
+    ]
+   },
+   "AnnotationKind": {
+    "type": "string",
+    "enum": [
+     "strength",
+     "weakness",
+     "filler",
+     "off_topic"
+    ]
+   },
+   "AnswerRewrite": {
+    "type": "object",
+    "properties": {
+     "question_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "question": {
+      "type": "string"
+     },
+     "original": {
+      "type": "string"
+     },
+     "rewritten": {
+      "type": "string"
+     },
+     "why_better": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "used_assets": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "question_index",
+     "question",
+     "original",
+     "rewritten",
+     "why_better",
+     "used_assets"
+    ]
+   },
+   "DimensionScore": {
+    "type": "object",
+    "properties": {
+     "dimension": {
+      "$ref": "#/components/schemas/ScoreDimension"
+     },
+     "score": {
+      "type": "number",
+      "format": "double"
+     },
+     "reason": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "dimension",
+     "score",
+     "reason",
+     "evidence"
+    ]
+   },
+   "DrillItem": {
+    "type": "object",
+    "properties": {
+     "action": {
+      "type": "string"
+     },
+     "why": {
+      "type": "string"
+     },
+     "time_cost": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "action",
+     "why",
+     "time_cost"
+    ]
+   },
+   "GapSeverity": {
+    "type": "string",
+    "enum": [
+     "blocker",
+     "major",
+     "minor"
+    ]
+   },
+   "ImprovementPlan": {
+    "type": "object",
+    "properties": {
+     "focus_area": {
+      "type": "string"
+     },
+     "diagnosis": {
+      "type": "string"
+     },
+     "expected_gain": {
+      "type": "string"
+     },
+     "drills": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DrillItem"
+      }
+     },
+     "resources": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "next_mock_setup": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "focus_area",
+     "diagnosis",
+     "expected_gain",
+     "drills",
+     "resources",
+     "next_mock_setup"
+    ]
+   },
+   "MistakeItem": {
+    "type": "object",
+    "properties": {
+     "knowledge_point": {
+      "type": "string"
+     },
+     "topic": {
+      "type": "string"
+     },
+     "question": {
+      "type": "string"
+     },
+     "candidate_answer": {
+      "type": "string"
+     },
+     "key_points": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "severity": {
+      "$ref": "#/components/schemas/GapSeverity"
+     },
+     "review_hint": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "knowledge_point",
+     "topic",
+     "question",
+     "candidate_answer",
+     "key_points",
+     "severity",
+     "review_hint"
+    ]
+   },
+   "ProsodyReport": {
+    "type": "object",
+    "properties": {
+     "words_per_minute": {
+      "type": "number",
+      "format": "double"
+     },
+     "filler_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "pause_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "longest_pause_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "speaking_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "interrupted_count": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "per_question": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/QuestionProsody"
+      }
+     },
+     "verdict": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "words_per_minute",
+     "filler_ratio",
+     "pause_ratio",
+     "longest_pause_ms",
+     "speaking_ratio",
+     "interrupted_count",
+     "per_question",
+     "verdict"
+    ]
+   },
+   "QuestionProsody": {
+    "type": "object",
+    "properties": {
+     "question_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "words_per_minute": {
+      "type": "number",
+      "format": "double"
+     },
+     "filler_count": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "pause_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "longest_pause_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "question_index",
+     "words_per_minute",
+     "filler_count",
+     "pause_ratio",
+     "longest_pause_ms"
+    ]
+   },
+   "ReviewReport": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "reviewable": {
+      "type": "boolean"
+     },
+     "overall_score": {
+      "type": "number",
+      "format": "double"
+     },
+     "headline": {
+      "type": "string"
+     },
+     "summary": {
+      "type": "string"
+     },
+     "dimensions": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DimensionScore"
+      }
+     },
+     "annotations": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TranscriptAnnotation"
+      }
+     },
+     "rewrites": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/AnswerRewrite"
+      }
+     },
+     "mistakes": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/MistakeItem"
+      }
+     },
+     "prosody": {
+      "$ref": "#/components/schemas/ProsodyReport"
+     },
+     "strengths": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "improvements": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "next_actions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "improvement_plans": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ImprovementPlan"
+      }
+     },
+     "abandoned_skills": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/AbandonedSkill"
+      }
+     },
+     "degraded_sections": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "session_id",
+     "duration_ms",
+     "reviewable",
+     "overall_score",
+     "headline",
+     "summary",
+     "dimensions",
+     "annotations",
+     "rewrites",
+     "mistakes",
+     "prosody",
+     "strengths",
+     "improvements",
+     "next_actions",
+     "improvement_plans",
+     "abandoned_skills",
+     "degraded_sections"
+    ]
+   },
+   "ScoreDimension": {
+    "type": "string",
+    "enum": [
+     "tech_depth",
+     "expression",
+     "resilience",
+     "value_fit",
+     "coding",
+     "collaboration"
+    ]
+   },
+   "TranscriptAnnotation": {
+    "type": "object",
+    "properties": {
+     "turn_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "kind": {
+      "$ref": "#/components/schemas/AnnotationKind"
+     },
+     "quote": {
+      "type": "string"
+     },
+     "comment": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "turn_index",
+     "kind",
+     "quote",
+     "comment"
+    ]
+   },
+   "InterruptedSession": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "title": {
+      "type": "string"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "reviewable": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "session_id",
+     "title",
+     "duration_ms",
+     "reviewable"
+    ]
+   },
+   "BuildSessionBody": {
+    "required": [
+     "level",
+     "persona",
+     "tier"
+    ],
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "maxLength": 64,
+      "minLength": 0,
+      "type": "string"
+     },
+     "persona": {
+      "$ref": "#/components/schemas/PersonaContract"
+     },
+     "resume_id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "job_id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "tier": {
+      "$ref": "#/components/schemas/CompanyTier"
+     },
+     "level": {
+      "$ref": "#/components/schemas/JobLevel"
+     },
+     "minutes": {
+      "maximum": 120,
+      "minimum": 5,
+      "type": "integer",
+      "format": "int32"
+     },
+     "coding_enabled": {
+      "type": "boolean"
+     }
+    }
+   },
+   "CompanyTier": {
+    "type": "string",
+    "enum": [
+     "big_tech",
+     "mid_tech",
+     "startup",
+     "manufacturing",
+     "state_owned",
+     "foreign",
+     "finance",
+     "outsource"
+    ]
+   },
+   "JobLevel": {
+    "type": "string",
+    "enum": [
+     "intern",
+     "junior",
+     "mid",
+     "senior",
+     "expert"
+    ]
+   },
+   "PersonaArchetype": {
+    "type": "string",
+    "enum": [
+     "irritable_cto",
+     "gentle_hr",
+     "picky_biz_leader",
+     "foreign_corp",
+     "academic_purist",
+     "silent_observer",
+     "rapid_fire",
+     "structured",
+     "custom"
+    ]
+   },
+   "PersonaContract": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "name": {
+      "type": "string"
+     },
+     "archetype": {
+      "$ref": "#/components/schemas/PersonaArchetype"
+     },
+     "company_tier": {
+      "$ref": "#/components/schemas/CompanyTier"
+     },
+     "job_title": {
+      "type": "string"
+     },
+     "company_flavor": {
+      "type": "string"
+     },
+     "voice": {
+      "type": "string"
+     },
+     "speech": {
+      "$ref": "#/components/schemas/SpeechStyle"
+     },
+     "pressure": {
+      "$ref": "#/components/schemas/PressureProfile"
+     },
+     "probing": {
+      "$ref": "#/components/schemas/ProbingProfile"
+     },
+     "opening_line": {
+      "type": "string"
+     },
+     "extra_rules": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "builtin": {
+      "type": "boolean"
+     },
+     "is_builtin": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "id",
+     "name",
+     "archetype",
+     "company_tier",
+     "job_title",
+     "company_flavor",
+     "voice",
+     "speech",
+     "pressure",
+     "probing",
+     "opening_line",
+     "extra_rules",
+     "builtin",
+     "is_builtin"
+    ]
+   },
+   "PressureProfile": {
+    "type": "object",
+    "properties": {
+     "aggression": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "interrupt_tendency": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "silence_pressure": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "challenge_frequency": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "tolerance_for_vagueness": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "aggression",
+     "interrupt_tendency",
+     "silence_pressure",
+     "challenge_frequency",
+     "tolerance_for_vagueness"
+    ]
+   },
+   "ProbingProfile": {
+    "type": "object",
+    "properties": {
+     "divergence": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "follow_up_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "project_focus": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "fundamentals_focus": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "system_design_focus": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "coding_focus": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "behavioral_focus": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "divergence",
+     "follow_up_depth",
+     "project_focus",
+     "fundamentals_focus",
+     "system_design_focus",
+     "coding_focus",
+     "behavioral_focus"
+    ]
+   },
+   "SpeechStyle": {
+    "type": "object",
+    "properties": {
+     "code_switch": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "verbosity": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "warmth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "formality": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "speech_rate": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "catchphrases": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "banned_phrases": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "code_switch",
+     "verbosity",
+     "warmth",
+     "formality",
+     "speech_rate",
+     "catchphrases",
+     "banned_phrases"
+    ]
+   },
+   "BankQuestion": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "text": {
+      "type": "string"
+     },
+     "skill": {
+      "type": "string"
+     },
+     "domain": {
+      "type": "string"
+     },
+     "depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "source": {
+      "$ref": "#/components/schemas/QuestionSource"
+     },
+     "project_ref": {
+      "type": "string"
+     },
+     "jd_ref": {
+      "type": "string"
+     },
+     "follow_ups": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "expected_signals": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "must_ask": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "id",
+     "text",
+     "skill",
+     "domain",
+     "depth",
+     "source",
+     "project_ref",
+     "jd_ref",
+     "follow_ups",
+     "expected_signals",
+     "must_ask"
+    ]
+   },
+   "DepthAction": {
+    "type": "string",
+    "nullable": true,
+    "enum": [
+     "deepen",
+     "sidestep",
+     "switch",
+     "abandon"
+    ]
+   },
+   "DriftKind": {
+    "type": "string",
+    "enum": [
+     "none",
+     "ai_self_reveal",
+     "role_swap",
+     "refusal",
+     "off_domain",
+     "style_break",
+     "answer_leak"
+    ]
+   },
+   "InterviewPhase": {
+    "type": "string",
+    "enum": [
+     "warmup",
+     "resume_deep_dive",
+     "tech_depth",
+     "behavioral",
+     "coding",
+     "stress",
+     "candidate_qa",
+     "closing",
+     "finished"
+    ]
+   },
+   "InterviewPlan": {
+    "type": "object",
+    "properties": {
+     "total_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "slots": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/PhaseSlot"
+      }
+     }
+    },
+    "required": [
+     "total_ms",
+     "slots"
+    ]
+   },
+   "InterviewState": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "persona": {
+      "$ref": "#/components/schemas/PersonaContract"
+     },
+     "plan": {
+      "$ref": "#/components/schemas/InterviewPlan"
+     },
+     "bank": {
+      "$ref": "#/components/schemas/QuestionBank"
+     },
+     "company_tier": {
+      "$ref": "#/components/schemas/CompanyTier"
+     },
+     "job_level": {
+      "$ref": "#/components/schemas/JobLevel"
+     },
+     "job_title": {
+      "type": "string"
+     },
+     "resume_digest": {
+      "type": "string"
+     },
+     "jd_digest": {
+      "type": "string"
+     },
+     "gap_digest": {
+      "type": "string"
+     },
+     "phase": {
+      "$ref": "#/components/schemas/InterviewPhase"
+     },
+     "phase_started_at_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "elapsed_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "turn_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "question_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "turns": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TurnRecord"
+      }
+     },
+     "questions": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/QuestionRecord"
+      }
+     },
+     "current_question_index": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "follow_up_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "pending_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "covered_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "asked_bank_ids": {
+      "type": "array",
+      "items": {
+       "type": "integer",
+       "format": "int32"
+      }
+     },
+     "skill_progress": {
+      "type": "object",
+      "additionalProperties": {
+       "$ref": "#/components/schemas/SkillProgress"
+      }
+     },
+     "domains_visited": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "current_domain": {
+      "type": "string"
+     },
+     "last_depth_action": {
+      "nullable": true,
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DepthAction"
+       }
+      ]
+     },
+     "questions_since_personality": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "personality_probes_used": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "interrupts_used_in_phase": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "drift_count": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "last_drift": {
+      "$ref": "#/components/schemas/DriftKind"
+     },
+     "turns_since_reanchor": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "star": {
+      "$ref": "#/components/schemas/StarState"
+     },
+     "live_scores": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "number",
+       "format": "double"
+      }
+     },
+     "coding_active": {
+      "type": "boolean"
+     },
+     "code_language": {
+      "type": "string"
+     },
+     "code_snapshot": {
+      "type": "string"
+     },
+     "reviewable": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "session_id",
+     "persona",
+     "plan",
+     "bank",
+     "company_tier",
+     "job_level",
+     "job_title",
+     "resume_digest",
+     "jd_digest",
+     "gap_digest",
+     "phase",
+     "phase_started_at_ms",
+     "elapsed_ms",
+     "turn_index",
+     "question_index",
+     "turns",
+     "questions",
+     "current_question_index",
+     "follow_up_depth",
+     "pending_skills",
+     "covered_skills",
+     "asked_bank_ids",
+     "skill_progress",
+     "domains_visited",
+     "current_domain",
+     "last_depth_action",
+     "questions_since_personality",
+     "personality_probes_used",
+     "interrupts_used_in_phase",
+     "drift_count",
+     "last_drift",
+     "turns_since_reanchor",
+     "star",
+     "live_scores",
+     "coding_active",
+     "code_language",
+     "code_snapshot",
+     "reviewable"
+    ]
+   },
+   "PhaseSlot": {
+    "type": "object",
+    "properties": {
+     "phase": {
+      "$ref": "#/components/schemas/InterviewPhase"
+     },
+     "budget_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "min_questions": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "phase",
+     "budget_ms",
+     "min_questions"
+    ]
+   },
+   "QuestionBank": {
+    "type": "object",
+    "properties": {
+     "questions": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/BankQuestion"
+      }
+     }
+    },
+    "required": [
+     "questions"
+    ]
+   },
+   "QuestionRecord": {
+    "type": "object",
+    "properties": {
+     "index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "phase": {
+      "$ref": "#/components/schemas/InterviewPhase"
+     },
+     "intent": {
+      "$ref": "#/components/schemas/TurnIntent"
+     },
+     "brief": {
+      "type": "string"
+     },
+     "target_skill": {
+      "type": "string"
+     },
+     "domain": {
+      "type": "string"
+     },
+     "depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "bank_question_id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "spoken_text": {
+      "type": "string"
+     },
+     "asked_at_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "follow_up_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "answer_text": {
+      "type": "string"
+     },
+     "quality": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+     },
+     "depth_action": {
+      "nullable": true,
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DepthAction"
+       }
+      ]
+     }
+    },
+    "required": [
+     "index",
+     "phase",
+     "intent",
+     "brief",
+     "target_skill",
+     "domain",
+     "depth",
+     "bank_question_id",
+     "spoken_text",
+     "asked_at_ms",
+     "follow_up_depth",
+     "answer_text",
+     "quality",
+     "depth_action"
+    ]
+   },
+   "QuestionSource": {
+    "type": "string",
+    "enum": [
+     "jd",
+     "project",
+     "skill",
+     "coding",
+     "fundamental",
+     "behavioral"
+    ]
+   },
+   "SkillProgress": {
+    "type": "object",
+    "properties": {
+     "skill": {
+      "type": "string"
+     },
+     "domain": {
+      "type": "string"
+     },
+     "depth_reached": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "attempts": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "attempts_at_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "low_streak": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "best_quality": {
+      "type": "number",
+      "format": "double"
+     },
+     "exhausted": {
+      "type": "boolean"
+     },
+     "abandoned_at_depth": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "skill",
+     "domain",
+     "depth_reached",
+     "attempts",
+     "attempts_at_depth",
+     "low_streak",
+     "best_quality",
+     "exhausted",
+     "abandoned_at_depth"
+    ]
+   },
+   "Speaker": {
+    "type": "string",
+    "enum": [
+     "interviewer",
+     "candidate"
+    ]
+   },
+   "StarElement": {
+    "type": "string",
+    "enum": [
+     "situation",
+     "task",
+     "action",
+     "result"
+    ]
+   },
+   "StarState": {
+    "type": "object",
+    "properties": {
+     "present": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/StarElement"
+      }
+     },
+     "probes_used": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "behavioral": {
+      "type": "boolean"
+     },
+     "is_behavioral": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "present",
+     "probes_used",
+     "behavioral",
+     "is_behavioral"
+    ]
+   },
+   "TurnIntent": {
+    "type": "string",
+    "enum": [
+     "ask_new",
+     "follow_up",
+     "star_probe",
+     "boundary_test",
+     "interrupt",
+     "pressure",
+     "acknowledge",
+     "transition",
+     "coding_handoff",
+     "close"
+    ]
+   },
+   "TurnRecord": {
+    "type": "object",
+    "properties": {
+     "index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "speaker": {
+      "$ref": "#/components/schemas/Speaker"
+     },
+     "text": {
+      "type": "string"
+     },
+     "started_at_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "intent": {
+      "nullable": true,
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TurnIntent"
+       }
+      ]
+     },
+     "was_interrupted": {
+      "type": "boolean"
+     },
+     "question_index": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     }
+    },
+    "required": [
+     "index",
+     "speaker",
+     "text",
+     "started_at_ms",
+     "duration_ms",
+     "intent",
+     "was_interrupted",
+     "question_index"
+    ]
+   },
+   "IngestPathBody": {
+    "required": [
+     "path"
+    ],
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "maxLength": 64,
+      "minLength": 0,
+      "type": "string"
+     },
+     "path": {
+      "minLength": 1,
+      "type": "string"
+     }
+    }
+   },
+   "ProjectHighlight": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "role": {
+      "type": "string"
+     },
+     "stack": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "impact": {
+      "type": "string"
+     },
+     "summary": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "name",
+     "role",
+     "stack",
+     "impact",
+     "summary"
+    ]
+   },
+   "ResumeProfile": {
+    "type": "object",
+    "properties": {
+     "source_name": {
+      "type": "string"
+     },
+     "raw_text": {
+      "type": "string"
+     },
+     "candidate_name": {
+      "type": "string"
+     },
+     "years_of_experience": {
+      "type": "number",
+      "format": "double"
+     },
+     "current_title": {
+      "type": "string"
+     },
+     "skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "projects": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ProjectHighlight"
+      }
+     },
+     "education": {
+      "type": "string"
+     },
+     "self_claims": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "source_name",
+     "raw_text",
+     "candidate_name",
+     "years_of_experience",
+     "current_title",
+     "skills",
+     "projects",
+     "education",
+     "self_claims"
+    ]
+   },
+   "StoredResume": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "label": {
+      "type": "string"
+     },
+     "file_path": {
+      "type": "string"
+     },
+     "profile": {
+      "$ref": "#/components/schemas/ResumeProfile"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "file_path",
+     "profile"
+    ]
+   },
+   "IngestJobTextBody": {
+    "required": [
+     "raw"
+    ],
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "maxLength": 64,
+      "minLength": 0,
+      "type": "string"
+     },
+     "raw": {
+      "minLength": 1,
+      "type": "string"
+     }
+    }
+   },
+   "JobDescription": {
+    "type": "object",
+    "properties": {
+     "source_name": {
+      "type": "string"
+     },
+     "raw_text": {
+      "type": "string"
+     },
+     "company": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "must_have": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "nice_to_have": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "responsibilities": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "source_name",
+     "raw_text",
+     "company",
+     "title",
+     "must_have",
+     "nice_to_have",
+     "responsibilities"
+    ]
+   },
+   "StoredJob": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "label": {
+      "type": "string"
+     },
+     "job": {
+      "$ref": "#/components/schemas/JobDescription"
+     }
+    },
+    "required": [
+     "id",
+     "label",
+     "job"
+    ]
+   },
+   "SynthesizeJobBody": {
+    "required": [
+     "level",
+     "tier",
+     "title"
+    ],
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "maxLength": 64,
+      "minLength": 0,
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 120,
+      "minLength": 0,
+      "type": "string"
+     },
+     "tier": {
+      "$ref": "#/components/schemas/CompanyTier"
+     },
+     "level": {
+      "$ref": "#/components/schemas/JobLevel"
+     },
+     "extra": {
+      "type": "string"
+     }
+    }
+   },
+   "DiagnoseBody": {
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "maxLength": 64,
+      "minLength": 0,
+      "type": "string"
+     },
+     "resume_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "job_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "refresh": {
+      "type": "boolean"
+     }
+    }
+   },
+   "GapReport": {
+    "type": "object",
+    "properties": {
+     "match_score": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "verdict": {
+      "type": "string"
+     },
+     "matches": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/SkillMatch"
+      }
+     },
+     "gaps": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/SkillGap"
+      }
+     },
+     "predicted_questions": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "focus_skills": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "phase_emphasis": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "integer",
+       "format": "int32"
+      }
+     }
+    },
+    "required": [
+     "match_score",
+     "verdict",
+     "matches",
+     "gaps",
+     "predicted_questions",
+     "focus_skills",
+     "phase_emphasis"
+    ]
+   },
+   "SkillGap": {
+    "type": "object",
+    "properties": {
+     "skill": {
+      "type": "string"
+     },
+     "severity": {
+      "$ref": "#/components/schemas/GapSeverity"
+     },
+     "jd_requirement": {
+      "type": "string"
+     },
+     "why_gap": {
+      "type": "string"
+     },
+     "bridge_asset": {
+      "type": "string"
+     },
+     "talking_script": {
+      "type": "string"
+     },
+     "study_hint": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "skill",
+     "severity",
+     "jd_requirement",
+     "why_gap",
+     "bridge_asset",
+     "talking_script",
+     "study_hint"
+    ]
+   },
+   "SkillMatch": {
+    "type": "object",
+    "properties": {
+     "skill": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "string"
+     },
+     "strength": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "skill",
+     "evidence",
+     "strength"
+    ]
+   },
+   "StoredGap": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "resume_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "job_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "report": {
+      "$ref": "#/components/schemas/GapReport"
+     }
+    },
+    "required": [
+     "id",
+     "resume_id",
+     "job_id",
+     "report"
+    ]
+   },
+   "UniqueNameBody": {
+    "required": [
+     "base"
+    ],
+    "type": "object",
+    "properties": {
+     "base": {
+      "maxLength": 60,
+      "minLength": 0,
+      "type": "string"
+     }
+    }
+   },
+   "SetMasteredBody": {
+    "type": "object",
+    "properties": {
+     "mistake_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "mastered": {
+      "type": "boolean"
+     }
+    }
+   },
+   "Ok": {
+    "type": "object",
+    "properties": {
+     "ok": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "ok"
+    ]
+   },
+   "StopInterviewBody": {
+    "type": "object",
+    "properties": {
+     "aborted": {
+      "type": "boolean"
+     }
+    }
+   },
+   "StopResult": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "reviewable": {
+      "type": "boolean"
+     },
+     "elapsed_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "session_id",
+     "reviewable",
+     "elapsed_ms"
+    ]
+   },
+   "StartInterviewBody": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     }
+    }
+   },
+   "MuteBody": {
+    "type": "object",
+    "properties": {
+     "muted": {
+      "type": "boolean"
+     }
+    }
+   },
+   "HintBody": {
+    "type": "object",
+    "properties": {
+     "auto": {
+      "type": "boolean"
+     }
+    }
+   },
+   "SubmitCodeBody": {
+    "required": [
+     "language"
+    ],
+    "type": "object",
+    "properties": {
+     "language": {
+      "maxLength": 40,
+      "minLength": 0,
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     }
+    }
+   },
+   "AppSettings": {
+    "type": "object",
+    "properties": {
+     "roles": {
+      "type": "object",
+      "additionalProperties": {
+       "$ref": "#/components/schemas/RoleBinding"
+      }
+     },
+     "realtime": {
+      "$ref": "#/components/schemas/RealtimeSettings"
+     },
+     "audio": {
+      "$ref": "#/components/schemas/AudioSettings"
+     },
+     "orchestration": {
+      "$ref": "#/components/schemas/OrchestrationSettings"
+     },
+     "features": {
+      "$ref": "#/components/schemas/FeatureSettings"
+     },
+     "custom_chat": {
+      "$ref": "#/components/schemas/CustomEndpoint"
+     },
+     "active_profile_name": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "roles",
+     "realtime",
+     "audio",
+     "orchestration",
+     "features",
+     "custom_chat",
+     "active_profile_name"
+    ]
+   },
+   "AudioSettings": {
+    "type": "object",
+    "properties": {
+     "input_device": {
+      "type": "string"
+     },
+     "output_device": {
+      "type": "string"
+     },
+     "input_gain": {
+      "type": "number",
+      "format": "double"
+     },
+     "vad_threshold": {
+      "type": "number",
+      "format": "double"
+     },
+     "silence_duration_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "prefix_padding_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "semantic_vad": {
+      "type": "boolean"
+     },
+     "auto_gain": {
+      "type": "boolean"
+     },
+     "learned_gain": {
+      "type": "number",
+      "format": "double"
+     },
+     "playback_buffer_ms": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "input_device",
+     "output_device",
+     "input_gain",
+     "vad_threshold",
+     "silence_duration_ms",
+     "prefix_padding_ms",
+     "semantic_vad",
+     "auto_gain",
+     "learned_gain",
+     "playback_buffer_ms"
+    ]
+   },
+   "CustomEndpoint": {
+    "type": "object",
+    "properties": {
+     "base_url": {
+      "type": "string"
+     },
+     "models": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "base_url",
+     "models"
+    ]
+   },
+   "FeatureSettings": {
+    "type": "object",
+    "properties": {
+     "copilot_enabled": {
+      "type": "boolean"
+     },
+     "coding_round_enabled": {
+      "type": "boolean"
+     },
+     "save_audio": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "copilot_enabled",
+     "coding_round_enabled",
+     "save_audio"
+    ]
+   },
+   "OrchestrationSettings": {
+    "type": "object",
+    "properties": {
+     "reanchor_every_turns": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "max_follow_up_depth": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "director_timeout_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "guard_timeout_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "interrupt_budget_per_phase": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "verbose_seconds_before_interrupt": {
+      "type": "number",
+      "format": "double"
+     },
+     "turn_gap_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "planned_minutes": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "reanchor_every_turns",
+     "max_follow_up_depth",
+     "director_timeout_ms",
+     "guard_timeout_ms",
+     "interrupt_budget_per_phase",
+     "verbose_seconds_before_interrupt",
+     "turn_gap_ms",
+     "planned_minutes"
+    ]
+   },
+   "RealtimeSettings": {
+    "type": "object",
+    "properties": {
+     "provider": {
+      "type": "string"
+     },
+     "model": {
+      "type": "string"
+     },
+     "voice": {
+      "type": "string"
+     },
+     "temperature": {
+      "type": "number",
+      "format": "double"
+     }
+    },
+    "required": [
+     "provider",
+     "model",
+     "voice",
+     "temperature"
+    ]
+   },
+   "RoleBinding": {
+    "type": "object",
+    "properties": {
+     "provider": {
+      "type": "string"
+     },
+     "model": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "provider",
+     "model"
+    ]
+   },
+   "ProbeBody": {
+    "required": [
+     "provider_key"
+    ],
+    "type": "object",
+    "properties": {
+     "provider_key": {
+      "maxLength": 60,
+      "minLength": 0,
+      "type": "string"
+     },
+     "model": {
+      "maxLength": 120,
+      "minLength": 0,
+      "type": "string"
+     },
+     "api_key": {
+      "type": "string"
+     },
+     "realtime": {
+      "type": "boolean"
+     }
+    }
+   },
+   "ProbeOutcome": {
+    "type": "object",
+    "properties": {
+     "ok": {
+      "type": "boolean"
+     },
+     "detail": {
+      "type": "string"
+     },
+     "latency_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "ok",
+     "detail",
+     "latency_ms"
+    ]
+   },
+   "ApiKeyBody": {
+    "required": [
+     "provider_key"
+    ],
+    "type": "object",
+    "properties": {
+     "provider_key": {
+      "maxLength": 60,
+      "minLength": 0,
+      "type": "string"
+     },
+     "api_key": {
+      "type": "string"
+     }
+    }
+   },
+   "RunCodeBody": {
+    "required": [
+     "language"
+    ],
+    "type": "object",
+    "properties": {
+     "language": {
+      "maxLength": 40,
+      "minLength": 0,
+      "type": "string"
+     },
+     "source": {
+      "maxLength": 60000,
+      "minLength": 0,
+      "type": "string"
+     },
+     "stdin": {
+      "maxLength": 20000,
+      "minLength": 0,
+      "type": "string"
+     }
+    }
+   },
+   "RunOutcome": {
+    "type": "object",
+    "properties": {
+     "ok": {
+      "type": "boolean"
+     },
+     "stdout": {
+      "type": "string"
+     },
+     "stderr": {
+      "type": "string"
+     },
+     "exit_code": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "timed_out": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "ok",
+     "stdout",
+     "stderr",
+     "exit_code",
+     "duration_ms",
+     "timed_out"
+    ]
+   },
+   "CodingCase": {
+    "type": "object",
+    "properties": {
+     "input": {
+      "type": "string"
+     },
+     "expected": {
+      "type": "string"
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "input",
+     "expected",
+     "note"
+    ]
+   },
+   "JudgeCodeBody": {
+    "required": [
+     "language"
+    ],
+    "type": "object",
+    "properties": {
+     "language": {
+      "maxLength": 40,
+      "minLength": 0,
+      "type": "string"
+     },
+     "source": {
+      "maxLength": 60000,
+      "minLength": 0,
+      "type": "string"
+     },
+     "cases": {
+      "maxItems": 12,
+      "minItems": 0,
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodingCase"
+      }
+     }
+    }
+   },
+   "CaseOutcome": {
+    "type": "object",
+    "properties": {
+     "index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "passed": {
+      "type": "boolean"
+     },
+     "input": {
+      "type": "string"
+     },
+     "expected": {
+      "type": "string"
+     },
+     "actual": {
+      "type": "string"
+     },
+     "stderr": {
+      "type": "string"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "timed_out": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "index",
+     "passed",
+     "input",
+     "expected",
+     "actual",
+     "stderr",
+     "duration_ms",
+     "timed_out"
+    ]
+   },
+   "JudgeOutcome": {
+    "type": "object",
+    "properties": {
+     "passed": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "total": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "cases": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CaseOutcome"
+      }
+     }
+    },
+    "required": [
+     "passed",
+     "total",
+     "cases"
+    ]
+   },
+   "ComposeChallengeBody": {
+    "type": "object",
+    "properties": {
+     "skill": {
+      "maxLength": 60,
+      "minLength": 0,
+      "type": "string"
+     }
+    }
+   },
+   "CodingChallenge": {
+    "type": "object",
+    "properties": {
+     "title": {
+      "type": "string"
+     },
+     "statement": {
+      "type": "string"
+     },
+     "io_format": {
+      "type": "string"
+     },
+     "starter": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "reference": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "cases": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodingCase"
+      }
+     },
+     "hints": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    },
+    "required": [
+     "title",
+     "statement",
+     "io_format",
+     "starter",
+     "reference",
+     "cases",
+     "hints"
+    ]
+   },
+   "TrendPoint": {
+    "type": "object",
+    "properties": {
+     "session_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+     },
+     "score": {
+      "type": "number",
+      "format": "double"
+     }
+    },
+    "required": [
+     "session_id",
+     "recorded_at",
+     "score"
+    ]
+   },
+   "SessionStatus": {
+    "type": "string",
+    "enum": [
+     "draft",
+     "running",
+     "reviewing",
+     "completed",
+     "aborted"
+    ]
+   },
+   "SessionSummary": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "title": {
+      "type": "string"
+     },
+     "status": {
+      "$ref": "#/components/schemas/SessionStatus"
+     },
+     "persona_name": {
+      "type": "string"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "overall_score": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+     },
+     "planned_minutes": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "id",
+     "title",
+     "status",
+     "persona_name",
+     "created_at",
+     "duration_ms",
+     "overall_score",
+     "planned_minutes"
+    ]
+   },
+   "GlobalStats": {
+    "type": "object",
+    "properties": {
+     "total_sessions": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "completed_sessions": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "total_minutes": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "best_score": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+     },
+     "latest_score": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+     },
+     "average_score": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+     }
+    },
+    "required": [
+     "total_sessions",
+     "completed_sessions",
+     "total_minutes",
+     "best_score",
+     "latest_score",
+     "average_score"
+    ]
+   },
+   "StoredMistake": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "session_id": {
+      "type": "integer",
+      "format": "int32",
+      "nullable": true
+     },
+     "item": {
+      "$ref": "#/components/schemas/MistakeItem"
+     },
+     "hit_count": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "mastered": {
+      "type": "boolean"
+     },
+     "last_seen_at": {
+      "type": "string",
+      "format": "date-time"
+     }
+    },
+    "required": [
+     "id",
+     "session_id",
+     "item",
+     "hit_count",
+     "mastered",
+     "last_seen_at"
+    ]
+   },
+   "MistakeCounts": {
+    "type": "object",
+    "properties": {
+     "pending": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "mastered": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "pending",
+     "mastered"
+    ]
+   },
+   "ServerInfo": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "version": {
+      "type": "string"
+     },
+     "event_names": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "subscribers": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "name",
+     "version",
+     "event_names",
+     "subscribers"
+    ]
+   },
+   "Catalog": {
+    "type": "object",
+    "properties": {
+     "chat": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ProviderOption"
+      }
+     },
+     "realtime": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ProviderOption"
+      }
+     },
+     "roles": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/RoleOption"
+      }
+     }
+    },
+    "required": [
+     "chat",
+     "realtime",
+     "roles"
+    ]
+   },
+   "ModelOption": {
+    "type": "object",
+    "properties": {
+     "value": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "value",
+     "label"
+    ]
+   },
+   "ProviderOption": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     },
+     "credential_key": {
+      "type": "string"
+     },
+     "console_url": {
+      "type": "string"
+     },
+     "default_model": {
+      "type": "string"
+     },
+     "models": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "voices": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ModelOption"
+      }
+     }
+    },
+    "required": [
+     "key",
+     "label",
+     "credential_key",
+     "console_url",
+     "default_model",
+     "models",
+     "voices"
+    ]
+   },
+   "RoleOption": {
+    "type": "object",
+    "properties": {
+     "key": {
+      "type": "string"
+     },
+     "label": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "key",
+     "label"
+    ]
+   },
+   "AudioDeviceOption": {
+    "type": "object",
+    "properties": {
+     "name": {
+      "type": "string"
+     },
+     "index": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "name",
+     "index"
+    ]
+   },
+   "AudioDevices": {
+    "type": "object",
+    "properties": {
+     "inputs": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/AudioDeviceOption"
+      }
+     },
+     "outputs": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/AudioDeviceOption"
+      }
+     }
+    },
+    "required": [
+     "inputs",
+     "outputs"
+    ]
+   },
+   "RealtimeStateChanged": {
+    "type": "object",
+    "properties": {
+     "connected": {
+      "type": "boolean"
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "connected",
+     "reason"
+    ]
+   },
+   "SpeechActivity": {
+    "type": "object",
+    "properties": {
+     "speaking": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "speaking"
+    ]
+   },
+   "AudioLevel": {
+    "type": "object",
+    "properties": {
+     "candidate": {
+      "type": "number",
+      "format": "double"
+     },
+     "interviewer": {
+      "type": "number",
+      "format": "double"
+     }
+    },
+    "required": [
+     "candidate",
+     "interviewer"
+    ]
+   },
+   "InterviewerSpeaking": {
+    "type": "object",
+    "properties": {
+     "speaking": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "speaking"
+    ]
+   },
+   "TranscriptDelta": {
+    "type": "object",
+    "properties": {
+     "speaker": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "speaker",
+     "text"
+    ]
+   },
+   "TranscriptCommitted": {
+    "type": "object",
+    "properties": {
+     "turn_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "speaker": {
+      "type": "string"
+     },
+     "text": {
+      "type": "string"
+     },
+     "started_at_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "duration_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "turn_id",
+     "speaker",
+     "text",
+     "started_at_ms",
+     "duration_ms"
+    ]
+   },
+   "PhaseChanged": {
+    "type": "object",
+    "properties": {
+     "phase": {
+      "$ref": "#/components/schemas/InterviewPhase"
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "phase",
+     "reason"
+    ]
+   },
+   "DirectorDecided": {
+    "type": "object",
+    "properties": {
+     "intent": {
+      "$ref": "#/components/schemas/TurnIntent"
+     },
+     "brief": {
+      "type": "string"
+     },
+     "target_skill": {
+      "type": "string"
+     },
+     "follow_up_depth": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "intent",
+     "brief",
+     "target_skill",
+     "follow_up_depth"
+    ]
+   },
+   "DriftDetected": {
+    "type": "object",
+    "properties": {
+     "kind": {
+      "$ref": "#/components/schemas/DriftKind"
+     },
+     "excerpt": {
+      "type": "string"
+     },
+     "repaired": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "kind",
+     "excerpt",
+     "repaired"
+    ]
+   },
+   "ReanchorPerformed": {
+    "type": "object",
+    "properties": {
+     "turn_index": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "trigger": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "turn_index",
+     "trigger"
+    ]
+   },
+   "CopilotHint": {
+    "type": "object",
+    "properties": {
+     "keywords": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "outline": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "caution": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "keywords",
+     "outline",
+     "caution"
+    ]
+   },
+   "StarProgress": {
+    "type": "object",
+    "properties": {
+     "present": {
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/StarElement"
+      }
+     },
+     "missing": {
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/StarElement"
+      }
+     },
+     "is_behavioral": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "present",
+     "missing",
+     "is_behavioral"
+    ]
+   },
+   "InterruptionFired": {
+    "type": "object",
+    "properties": {
+     "by_interviewer": {
+      "type": "boolean"
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "by_interviewer",
+     "reason"
+    ]
+   },
+   "LiveAnnotation": {
+    "type": "object",
+    "properties": {
+     "turn_id": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "kind": {
+      "$ref": "#/components/schemas/AnnotationKind"
+     },
+     "comment": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "turn_id",
+     "kind",
+     "comment"
+    ]
+   },
+   "LiveScoreUpdated": {
+    "type": "object",
+    "properties": {
+     "scores": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "number",
+       "format": "double"
+      }
+     }
+    },
+    "required": [
+     "scores"
+    ]
+   },
+   "CodeSubmitted": {
+    "type": "object",
+    "properties": {
+     "language": {
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "language",
+     "source"
+    ]
+   },
+   "EngineFailure": {
+    "type": "object",
+    "properties": {
+     "user_message": {
+      "type": "string"
+     },
+     "detail": {
+      "type": "string"
+     },
+     "fatal": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "user_message",
+     "detail",
+     "fatal"
+    ]
+   },
+   "ProsodySnapshot": {
+    "type": "object",
+    "properties": {
+     "words_per_minute": {
+      "type": "number",
+      "format": "double"
+     },
+     "filler_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "pause_ratio": {
+      "type": "number",
+      "format": "double"
+     },
+     "longest_pause_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "words_per_minute",
+     "filler_ratio",
+     "pause_ratio",
+     "longest_pause_ms"
+    ]
+   },
+   "ReviewProgress": {
+    "type": "object",
+    "properties": {
+     "stage": {
+      "type": "string"
+     },
+     "percent": {
+      "type": "integer",
+      "format": "int32"
+     },
+     "detail": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "stage",
+     "percent",
+     "detail"
+    ]
+   },
+   "ElapsedTick": {
+    "type": "object",
+    "properties": {
+     "elapsed_ms": {
+      "type": "integer",
+      "format": "int64"
+     },
+     "remaining_ms": {
+      "type": "integer",
+      "format": "int64"
+     }
+    },
+    "required": [
+     "elapsed_ms",
+     "remaining_ms"
+    ]
+   },
+   "TaskProgress": {
+    "type": "object",
+    "properties": {
+     "task_id": {
+      "type": "string"
+     },
+     "stage": {
+      "type": "string"
+     },
+     "percent": {
+      "type": "integer",
+      "format": "int32"
+     }
+    },
+    "required": [
+     "task_id",
+     "stage",
+     "percent"
+    ]
+   }
+  }
+ },
+ "x-interviewer-events": {
+  "realtime_state_changed": "RealtimeStateChanged",
+  "speech_activity": "SpeechActivity",
+  "audio_level": "AudioLevel",
+  "interviewer_speaking": "InterviewerSpeaking",
+  "transcript_delta": "TranscriptDelta",
+  "transcript_committed": "TranscriptCommitted",
+  "phase_changed": "PhaseChanged",
+  "director_decided": "DirectorDecided",
+  "drift_detected": "DriftDetected",
+  "reanchor_performed": "ReanchorPerformed",
+  "copilot_hint": "CopilotHint",
+  "star_progress": "StarProgress",
+  "interruption_fired": "InterruptionFired",
+  "live_annotation": "LiveAnnotation",
+  "live_score_updated": "LiveScoreUpdated",
+  "code_submitted": "CodeSubmitted",
+  "engine_failure": "EngineFailure",
+  "prosody_snapshot": "ProsodySnapshot",
+  "review_progress": "ReviewProgress",
+  "elapsed_tick": "ElapsedTick",
+  "task_progress": "TaskProgress"
+ }
+}

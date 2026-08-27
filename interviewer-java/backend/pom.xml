@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AI 模拟面试后端。以 Tauri sidecar 方式运行的单用户本机进程。
+
+  版本矩阵以 Spring Boot 3.5.10 为轴：spring-ai-alibaba 1.1.2.3 明确依赖它，
+  spring-cloud-alibaba 2025.0.0.0 走 spring-cloud-dependencies-parent 4.3.0
+  （同为 3.5.x 线），三者不会互相拽版本。
+
+  Spring Cloud Alibaba 只取 Sentinel：这个后端不做服务发现、不做分布式事务，
+  Nacos / Seata / RocketMQ 在单机 SQLite 场景下没有落脚点。Sentinel 用来给
+  模型调用做本机限流——用户的 Key 是自己的钱，跑飞了要拦住。
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.10</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>com.interviewer</groupId>
+  <artifactId>interviewer-backend</artifactId>
+  <version>2.0.0</version>
+  <name>interviewer-backend</name>
+  <description>AI 模拟面试系统 - 后端</description>
+
+  <properties>
+    <java.version>17</java.version>
+    <!-- 本机平台编码是 GBK，全链路必须显式锁 UTF-8，否则中文提示词与日志全乱 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <spring-ai.version>1.1.8</spring-ai.version>
+    <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
+    <mybatis-plus.version>3.5.17</mybatis-plus.version>
+    <sqlite-jdbc.version>3.53.4.0</sqlite-jdbc.version>
+    <pdfbox.version>3.0.8</pdfbox.version>
+    <poi.version>5.5.1</poi.version>
+    <jna.version>5.19.1</jna.version>
+    <caffeine.version>3.2.4</caffeine.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-bom</artifactId>
+        <version>${spring-ai.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- 本机 HTTP + WebSocket 通道 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <!--
+      模型：九个供应商统一走 OpenAI 兼容协议，换模型只换 baseUrl + model。
+      这是原版的设计，百炼也用它的 compatible-mode 端点。
+
+      刻意用类库而不是 starter：starter 的自动配置会为 chat/speech/embedding/image 各建
+      一个模型 bean，且强制要求全局 spring.ai.openai.api-key，缺了就启动失败。而这里的
+      Key 存在系统凭据库、四个角色各自可绑不同供应商，模型是运行时按角色构建的，
+      一个自动配置的 bean 都用不上。
+
+      也不引 spring-ai-alibaba-starter-dashscope：它会带来第二套 options 构建与固定域名，
+      而原版没用到任何 DashScope 原生能力。真正需要它的是实时语音，那部分留在 Python。
+    -->
+    <dependency>
+      <groupId>org.springframework.ai</groupId>
+      <artifactId>spring-ai-openai</artifactId>
+    </dependency>
+
+    <!-- 模型调用的本机限流。用户的额度是真金白银，编排出 bug 时要拦得住 -->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+
+    <!-- 持久层：单文件 SQLite + WAL -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+      <version>${mybatis-plus.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>${sqlite-jdbc.version}</version>
+    </dependency>
+
+    <!-- 简历与 JD 解析 -->
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>${pdfbox.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+
+    <!-- API Key 存进 Windows 凭据管理器，不落明文 -->
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna-platform</artifactId>
+      <version>${jna.version}</version>
+    </dependency>
+
+    <!-- 真题语料的只读缓存 -->
+    <dependency>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+      <version>${caffeine.version}</version>
+    </dependency>
+
+    <!-- 前端类型由 /v3/api-docs 生成，这条是那条管线的源头 -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>2.8.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>interviewer-backend</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>com.interviewer.BackendApplication</mainClass>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <!--
+            测试的数据根目录必须指到 target 下。默认位置是用户真实的数据目录，
+            跑一次集成测试就会把人家的面试记录和配置写脏。
+          -->
+          <systemPropertyVariables>
+            <interviewer.dataRoot>${project.build.directory}/test-data</interviewer.dataRoot>
+            <file.encoding>UTF-8</file.encoding>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerArgs>
+            <!-- 反射拿不到形参名会让 Jackson 对 record 的反序列化失效 -->
+            <arg>-parameters</arg>
+          </compilerArgs>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
