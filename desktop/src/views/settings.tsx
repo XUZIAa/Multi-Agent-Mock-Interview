@@ -53,6 +53,9 @@ async function openConsole(url: string): Promise<void> {
   }
 }
 
+/** 接入地址与模型清单由用户自己填的那两个供应商，与后端的 chatCatalog 覆盖规则一致。 */
+const CUSTOM_PROVIDERS = new Set(["custom", "openai_compat"]);
+
 const TAB_ITEMS = [
   { value: "keys", label: "API Key" },
   { value: "models", label: "模型" },
@@ -290,9 +293,10 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
             {catalog.roles.map((role) => {
               const binding = settings.roles[role.key] ?? { provider: "deepseek", model: "" };
               const provider = catalog.chat.find((p) => p.key === binding.provider);
-              // openai_compat 的模型列表来自 custom_chat（用户填写），其余来自 catalog
+              // 自定义端点的模型清单由用户填写，其余来自 catalog。custom（本机 Ollama）
+              // 与 openai_compat（中转）后端都走 custom_chat 覆盖，这里必须同样两个都算
               const modelOptions =
-                binding.provider === "openai_compat" && settings.custom_chat.models.length > 0
+                CUSTOM_PROVIDERS.has(binding.provider) && settings.custom_chat.models.length > 0
                   ? settings.custom_chat.models
                   : provider?.models ?? [];
               const currentModel = binding.model || (provider?.default_model ?? "");
