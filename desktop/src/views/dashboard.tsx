@@ -88,6 +88,9 @@ export function DashboardView({ onNavigate, interrupted, onOpenReview }: Props) 
   const [trend, setTrend] = useState<TrendPoint[]>([]);
   const [loading, setLoading] = useState(true);
 
+  /** 中断的场次里第一场够长、能补复盘的。太短的场次生成不出东西，不该给按钮。 */
+  const resumable = interrupted.find((s) => s.reviewable);
+
   const load = useCallback(async () => {
     try {
       const [s, list, ps, tr] = await Promise.all([
@@ -147,13 +150,23 @@ export function DashboardView({ onNavigate, interrupted, onOpenReview }: Props) 
                   有 {interrupted.length} 场面试没有正常结束
                 </p>
                 <p className="text-muted-foreground mt-0.5 text-xs">
-                  记录已完整保留，可以去成长轨迹里补出复盘
+                  {resumable
+                    ? "记录已完整保留，可以直接补出复盘"
+                    : "这几场时长太短，不足以生成复盘，记录仍可查看"}
                 </p>
               </div>
             </div>
-            <Button variant="outline" size="sm" onClick={() => onNavigate("growth")}>
-              去查看
-            </Button>
+            {/* 原先跳成长轨迹，但那页没有生成复盘的入口，按钮的承诺落不了地。
+                都太短时干脆不给按钮：这时确实没有可做的事 */}
+            {resumable && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onOpenReview(resumable.session_id, true)}
+              >
+                补出复盘
+              </Button>
+            )}
           </div>
         )}
 

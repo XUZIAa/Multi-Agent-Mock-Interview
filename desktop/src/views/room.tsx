@@ -64,6 +64,7 @@ export function RoomView({ state, onFinished, onAbort }: Props) {
   const [talking, setTalking] = useState(false);
   const [confirmEnd, setConfirmEnd] = useState(false);
   const [hintCooling, setHintCooling] = useState(false);
+  const [codeSubmitting, setCodeSubmitting] = useState(false);
 
   const orb = useRef<OrbHandle | null>(null);
   const meter = useRef<MeterHandle | null>(null);
@@ -215,8 +216,19 @@ export function RoomView({ state, onFinished, onAbort }: Props) {
       toast.error("先写点代码再提交");
       return;
     }
-    toast.info("已提交，面试官正在看你的代码");
-    await api.post("/engine/code", { language, source }).catch(() => undefined);
+    if (codeSubmitting) {
+      return;
+    }
+    setCodeSubmitting(true);
+    toast.info("已提交，面试官正在分析你的代码");
+    try {
+      await api.post("/engine/code", { language, source });
+      toast.success("代码分析完成，面试官会针对性追问");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "代码提交失败");
+    } finally {
+      setCodeSubmitting(false);
+    }
   };
 
   const end = async () => {

@@ -404,9 +404,10 @@ export function ReviewView({ sessionId, autoGenerate, onBack }: Props) {
                     <p className="text-success text-xs">这么说更好</p>
                     <p className="selectable text-sm leading-relaxed">{rw.rewritten}</p>
                   </div>
-                  {rw.why_better && (
+                  {/* why_better 是数组：空数组也是真值，直接渲染还会把几条理由连成一串 */}
+                  {rw.why_better.length > 0 && (
                     <p className="text-muted-foreground selectable text-xs">
-                      为什么更好：{rw.why_better}
+                      为什么更好：{rw.why_better.join("；")}
                     </p>
                   )}
                   {i < report.rewrites.length - 1 && <div className="border-t pt-1" />}
@@ -440,9 +441,8 @@ export function ReviewView({ sessionId, autoGenerate, onBack }: Props) {
                       <Badge variant="outline" className={ANNOTATION_BADGE[note.kind]}>
                         {labelOf(ANNOTATION_KIND, note.kind)}
                       </Badge>
-                      <span className="text-muted-foreground text-xs">
-                        第 {note.turn_index + 1} 轮
-                      </span>
+                      {/* turn_index 本来就从 1 起，再加一会和上面按同一个键取到的那轮错开 */}
+                      <span className="text-muted-foreground text-xs">第 {note.turn_index} 轮</span>
                     </div>
                     {(note.quote || turn?.text) && (
                       <p className="selectable text-sm italic">
