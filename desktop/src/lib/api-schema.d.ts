@@ -1585,7 +1585,7 @@ export interface components {
             max_follow_up_depth: number;
             /**
              * Director Timeout Ms
-             * @default 9000
+             * @default 20000
              */
             director_timeout_ms: number;
             /**
@@ -1707,6 +1707,8 @@ export interface components {
          * @description 探测某个供应商的密钥与模型是否真的能用。
          *
          *     密钥留空则用已保存的那份，这样用户不必为了测试重新粘一遍。
+         *     base_url 同理：留空用已保存的自定义端点地址；前端把界面上的草稿传过来，
+         *     测的就是用户眼前看到的那份配置，而不是上次保存的旧值。
          */
         ProbeBody: {
             /** Provider Key */
@@ -1726,6 +1728,11 @@ export interface components {
              * @default false
              */
             realtime: boolean;
+            /**
+             * Base Url
+             * @default
+             */
+            base_url: string;
         };
         /** ProbeOutcome */
         ProbeOutcome: {

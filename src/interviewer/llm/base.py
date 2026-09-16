@@ -85,12 +85,14 @@ class ChatClient:
         self.provider_key = provider_key
         self.model = model
         self._base_url = base_url.rstrip("/")
+        # 本地端点（Ollama 等）没有 Key：空值发出去 httpx 会直接抛 Illegal header，
+        # 所以只在真的有 Key 时才带 Authorization
+        headers = {"Content-Type": "application/json"}
+        if api_key.strip():
+            headers["Authorization"] = f"Bearer {api_key.strip()}"
         self._client = httpx.AsyncClient(
             base_url=self._base_url,
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
+            headers=headers,
             timeout=httpx.Timeout(timeout, connect=10.0),
         )
 
@@ -299,7 +301,8 @@ async def probe_chat(
 
     把 HTTP 状态码翻译成人话，让用户能分清是 Key 的问题还是别的问题。
     """
-    if not api_key.strip():
+    # 本地端点（custom 指向 Ollama 一类）通常不需要 Key，只有云端才把空 Key 当作没填
+    if not api_key.strip() and provider_key != "custom":
         return ProbeResult(False, "还没填 API Key")
     if not model.strip():
         return ProbeResult(False, "还没选模型")

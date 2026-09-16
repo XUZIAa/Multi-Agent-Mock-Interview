@@ -53,6 +53,9 @@ async function openConsole(url: string): Promise<void> {
   }
 }
 
+/** 接入地址与模型清单由用户自己填的那两个供应商，与后端的 chatCatalog 覆盖规则一致。 */
+const CUSTOM_PROVIDERS = new Set(["custom", "openai_compat"]);
+
 const TAB_ITEMS = [
   { value: "keys", label: "API Key" },
   { value: "models", label: "模型" },
@@ -104,6 +107,16 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
 
   const save = async () => {
     if (!settings) return;
+    // openai_compat 没有默认接入地址，绑了它却不填地址，保存时看不出问题，
+    // 要到启动面试才在后端炸出来——离操作现场太远，这里提前拦下
+    const dangling = catalog?.roles.find((r) => {
+      const binding = settings.roles[r.key];
+      return binding?.provider === "openai_compat" && !settings.custom_chat.base_url.trim();
+    });
+    if (dangling) {
+      toast.error(`「${dangling.label}」绑定了 OpenAI 兼容中转，但自定义端点的接入地址是空的`);
+      return;
+    }
     setSaving(true);
     try {
       // 先落密钥再存配置：配置保存会触发模型客户端重建，届时应当已能取到新密钥
@@ -279,105 +292,13 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
-              <Sparkles className="text-primary size-4" />
-              模型
-            </CardTitle>
-            <CardDescription>
-              四个角色可分别绑定。导演与复盘吃长上下文，提词与守卫在延迟敏感链路上要快
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {catalog.roles.map((role) => {
-              const binding = settings.roles[role.key] ?? { provider: "deepseek", model: "" };
-              const provider = catalog.chat.find((p) => p.key === binding.provider);
-              // openai_compat 的模型列表来自 custom_chat（用户填写），其余来自 catalog
-              const modelOptions =
-                binding.provider === "openai_compat" && settings.custom_chat.models.length > 0
-                  ? settings.custom_chat.models
-                  : provider?.models ?? [];
-              const currentModel = binding.model || (provider?.default_model ?? "");
-              const id = `role:${role.key}`;
-              const state = probe[id];
-              return (
-                <div key={role.key} className="space-y-1.5">
-                  <Label className="text-sm">{role.label}</Label>
-                  <div className="flex flex-wrap gap-2">
-                    <Select
-                      value={binding.provider}
-                      onValueChange={(v) => {
-                        const next = catalog.chat.find((p) => p.key === v);
-                        setSettings({
-                          ...settings,
-                          roles: {
-                            ...settings.roles,
-                            [role.key]: { provider: v, model: next?.default_model ?? "" },
-                          },
-                        });
-                      }}
-                    >
-                      <SelectTrigger className="w-[190px]">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {catalog.chat.map((p) => (
-                          <SelectItem key={p.key} value={p.key}>
-                            {p.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <Select
-                      value={modelOptions.includes(currentModel) ? currentModel : (modelOptions[0] ?? "")}
-                      onValueChange={(v) =>
-                        setSettings({
-                          ...settings,
-                          roles: {
-                            ...settings.roles,
-                            [role.key]: { ...binding, model: v },
-                          },
-                        })
-                      }
-                    >
-                      <SelectTrigger className="min-w-[210px] flex-1">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {modelOptions.map((m) => (
-                          <SelectItem key={m} value={m}>
-                            {m}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <Button
-                      variant="outline"
-                      disabled={state?.pending}
-                      onClick={() =>
-                        void runProbe(id, {
-                          provider_key: binding.provider,
-                          model: binding.model || provider?.default_model || "",
-                        })
-                      }
-                    >
-                      {state?.pending ? <Loader2 className="animate-spin" /> : null}
-                      测试
-                    </Button>
-                  </div>
-                  {state?.result && <ProbeLine result={state.result} />}
-                </div>
-              );
-            })}
-          </CardContent>
-        </Card>
-
-        <Card className="mt-4">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-base">
               <Sparkles className="text-muted-foreground size-4" />
-              中转接入点配置
+              自定义端点
             </CardTitle>
             <CardDescription>
-              填入任意 OpenAI 兼容中转的接入地址和模型列表。保存后「OpenAI 兼容中转」选项卡的模型将使用这里的配置
+              供应商选「自定义 OpenAI 兼容端点」（本机 Ollama 等）或「自定义 OpenAI
+              兼容中转」时，从这里取接入地址与模型候选。地址留空时本机端点回落到
+              http://127.0.0.1:11434/v1（Ollama 默认）
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -412,8 +333,102 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
               />
             </Field>
             <p className="text-muted-foreground text-xs">
-              若模型列表为空，「OpenAI 兼容中转」将使用默认模型清单
+              这里的清单只是候选：绑定角色时也可以直接输入清单外的模型名
             </p>
+          </CardContent>
+        </Card>
+
+        <Card className="mt-4">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Sparkles className="text-primary size-4" />
+              模型
+            </CardTitle>
+            <CardDescription>
+              四个角色可分别绑定。导演与复盘吃长上下文，提词与守卫在延迟敏感链路上要快；
+              模型名可以直接输入，不一定要在候选清单里
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {catalog.roles.map((role) => {
+              const binding = settings.roles[role.key] ?? { provider: "deepseek", model: "" };
+              const provider = catalog.chat.find((p) => p.key === binding.provider);
+              // 自定义端点的模型候选来自 custom_chat（用户填写），其余来自 catalog。
+              // custom（本机 Ollama）与 openai_compat（中转）后端都走 custom_chat 覆盖
+              const modelOptions = CUSTOM_PROVIDERS.has(binding.provider)
+                ? settings.custom_chat.models
+                : (provider?.models ?? []);
+              const id = `role:${role.key}`;
+              const state = probe[id];
+              return (
+                <div key={role.key} className="space-y-1.5">
+                  <Label className="text-sm">{role.label}</Label>
+                  <div className="flex flex-wrap gap-2">
+                    <Select
+                      value={binding.provider}
+                      onValueChange={(v) => {
+                        const next = catalog.chat.find((p) => p.key === v);
+                        // 自定义端点直接用 catalog 默认值（空串 / qwen3:14b）多半不在
+                        // 用户自己的清单里，切过去时优先带出用户填的第一个模型
+                        const fallback = CUSTOM_PROVIDERS.has(v)
+                          ? (settings.custom_chat.models[0] ?? next?.default_model ?? "")
+                          : (next?.default_model ?? "");
+                        setSettings({
+                          ...settings,
+                          roles: {
+                            ...settings.roles,
+                            [role.key]: { provider: v, model: fallback },
+                          },
+                        });
+                      }}
+                    >
+                      <SelectTrigger className="w-[190px]">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {catalog.chat.map((p) => (
+                          <SelectItem key={p.key} value={p.key}>
+                            {p.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <ModelCombobox
+                      value={binding.model}
+                      options={modelOptions}
+                      placeholder="输入或选择模型"
+                      onChange={(v) =>
+                        setSettings({
+                          ...settings,
+                          roles: {
+                            ...settings.roles,
+                            [role.key]: { ...binding, model: v.trim() },
+                          },
+                        })
+                      }
+                    />
+                    <Button
+                      variant="outline"
+                      disabled={state?.pending}
+                      onClick={() =>
+                        void runProbe(id, {
+                          provider_key: binding.provider,
+                          model: binding.model || provider?.default_model || "",
+                          // 把界面上的草稿地址一并带过去，测试的才是眼前这份配置
+                          base_url: CUSTOM_PROVIDERS.has(binding.provider)
+                            ? settings.custom_chat.base_url
+                            : "",
+                        })
+                      }
+                    >
+                      {state?.pending ? <Loader2 className="animate-spin" /> : null}
+                      测试
+                    </Button>
+                  </div>
+                  {state?.result && <ProbeLine result={state.result} />}
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
 
@@ -469,11 +484,18 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {(realtime?.models ?? []).map((m) => (
-                      <SelectItem key={m} value={m}>
-                        {m}
-                      </SelectItem>
-                    ))}
+                    {/* 已保存的模型名不在候选里时也要如实显示，否则界面空白、值却存在 */}
+                    {(() => {
+                      const models = realtime?.models ?? [];
+                      const current = settings.realtime.model || (realtime?.default_model ?? "");
+                      const items =
+                        current && !models.includes(current) ? [current, ...models] : models;
+                      return items.map((m) => (
+                        <SelectItem key={m} value={m}>
+                          {m}
+                        </SelectItem>
+                      ));
+                    })()}
                   </SelectContent>
                 </Select>
               </Field>
@@ -735,5 +757,75 @@ function ProbeLine({ result, className }: { result: ProbeOutcome; className?: st
       {result.ok ? <Check className="size-3.5 shrink-0" /> : <X className="size-3.5 shrink-0" />}
       <span className="selectable">{result.detail}</span>
     </p>
+  );
+}
+
+/** 可输入的模型选择框：既能在候选里挑，也能直接敲任意模型名。
+ *
+ *  之前的封闭下拉有个隐蔽缺陷：选自定义供应商后界面显示的是列表第一项，
+ *  实际保存的却是 catalog 的默认模型（openai_compat 是空串、custom 是 qwen3:14b），
+ *  所见非所得。输入框直接展示真实保存值，从根上消除这个错位。
+ */
+function ModelCombobox({
+  value,
+  options,
+  placeholder,
+  onChange,
+}: {
+  value: string;
+  options: string[];
+  placeholder: string;
+  onChange: (v: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const query = value.trim().toLowerCase();
+  const matches = query ? options.filter((m) => m.toLowerCase().includes(query)) : options;
+  return (
+    <div className="relative min-w-[210px] flex-1">
+      <Input
+        value={value}
+        placeholder={placeholder}
+        role="combobox"
+        aria-expanded={open}
+        className="font-mono text-xs"
+        onChange={(e) => {
+          onChange(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape" || e.key === "Enter") {
+            e.preventDefault();
+            setOpen(false);
+          }
+        }}
+      />
+      {/* 面板按下时不抢走输入框焦点，否则 blur 先关闭面板、点击永远落空 */}
+      {open && matches.length > 0 && (
+        <div
+          className="bg-popover text-popover-foreground absolute top-full left-0 z-50 mt-1 max-h-64 w-full overflow-auto rounded-md border shadow-md"
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          {matches.map((m) => (
+            <button
+              key={m}
+              type="button"
+              className={cn(
+                "flex w-full items-center gap-2 px-3 py-1.5 text-left font-mono text-xs",
+                m === value ? "bg-accent" : "hover:bg-accent/50",
+              )}
+              onClick={() => {
+                onChange(m);
+                setOpen(false);
+              }}
+            >
+              {m === value && <Check className="size-3 shrink-0" />}
+              <span className="truncate">{m}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

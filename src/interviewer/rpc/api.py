@@ -485,7 +485,15 @@ async def config_probe(request: Request, body: ProbeBody) -> ProbeOutcome:
     if chat is None:
         raise HTTPException(status_code=404, detail=f"未知的文本供应商 {body.provider_key}")
     settings = ctx.config.settings
-    base_url = chat.base_url or settings.custom_chat.base_url
+    if body.provider_key in ("custom", "openai_compat"):
+        # 与 AppSettings.chat_catalog 保持同一优先级：界面草稿 > 已保存配置 > catalog 默认。
+        # 此前写的是 chat.base_url or settings.custom_chat.base_url，custom 会被
+        # catalog 里的 Ollama 默认地址抢先，探测到的和运行时用的不是同一个端点
+        base_url = body.base_url.strip() or settings.custom_chat.base_url.strip() or chat.base_url
+        if not base_url:
+            return ProbeOutcome(ok=False, detail="还没填接入地址（base_url）", latency_ms=0)
+    else:
+        base_url = chat.base_url
     result = await probe_chat(
         provider_key=chat.key,
         base_url=base_url,
