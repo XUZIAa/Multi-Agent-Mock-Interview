@@ -699,6 +699,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/config/models": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Config Fetch Models
+         * @description 拉取自定义端点的模型清单，免去用户手抄。
+         *
+         *     地址与 Key 的优先级同 probe：界面草稿 > 已保存配置 > catalog 默认，
+         *     填完地址立刻就能拉，不必先保存。
+         */
+        post: operations["config_fetch_models_config_models_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/config": {
         parameters: {
             query?: never;
@@ -1182,6 +1205,27 @@ export interface components {
              */
             save_audio: boolean;
         };
+        /**
+         * FetchModelsBody
+         * @description 拉取自定义端点的模型清单。
+         *
+         *     base_url 与 api_key 留空则用已保存的那份（同 ProbeBody 的优先级：界面草稿优先），
+         *     这样填完地址立刻就能拉，不必先保存。
+         */
+        FetchModelsBody: {
+            /** Provider Key */
+            provider_key: string;
+            /**
+             * Base Url
+             * @default
+             */
+            base_url: string;
+            /**
+             * Api Key
+             * @default
+             */
+            api_key: string;
+        };
         /** GapReport */
         GapReport: {
             /**
@@ -1557,6 +1601,15 @@ export interface components {
             value: string;
             /** Label */
             label: string;
+        };
+        /** ModelsOutcome */
+        ModelsOutcome: {
+            /** Ok */
+            ok: boolean;
+            /** Detail */
+            detail: string;
+            /** Models */
+            models: string[];
         };
         /** MuteBody */
         MuteBody: {
@@ -3716,6 +3769,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProbeOutcome"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    config_fetch_models_config_models_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FetchModelsBody"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelsOutcome"];
                 };
             };
             /** @description Validation Error */

@@ -2,6 +2,7 @@ import { getCurrentWindow } from "@tauri-apps/api/window";
 import { Minus, Square, Copy as Squares, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { inTauri } from "@/lib/backend";
 import { cn } from "@/lib/utils";
 
 /** 自绘标题栏。系统边框已关掉，所以拖动、最大化、关闭都得自己接。
@@ -9,8 +10,12 @@ import { cn } from "@/lib/utils";
  *  所以点按钮不会误触发拖窗口。 */
 export function TitleBar({ dark }: { dark?: boolean }) {
   const [maximized, setMaximized] = useState(false);
+  // 浏览器里开发调试时没有 Tauri 注入对象，窗口 API 一调就崩，
+  // 这里降级成纯静态标题栏：只留标题，不放控制按钮
+  const inApp = inTauri();
 
   useEffect(() => {
+    if (!inApp) return;
     const win = getCurrentWindow();
     let alive = true;
     const sync = async () => {
@@ -23,9 +28,7 @@ export function TitleBar({ dark }: { dark?: boolean }) {
       alive = false;
       void off.then((fn) => fn());
     };
-  }, []);
-
-  const win = getCurrentWindow();
+  }, [inApp]);
 
   return (
     <header
@@ -43,26 +46,28 @@ export function TitleBar({ dark }: { dark?: boolean }) {
         AI 面试助手
       </span>
 
-      <div className="flex items-center gap-2 pr-3.5">
-        <Dot
-          tone="amber"
-          label="最小化"
-          onClick={() => void win.minimize()}
-          icon={<Minus strokeWidth={3} />}
-        />
-        <Dot
-          tone="green"
-          label={maximized ? "还原窗口" : "最大化"}
-          onClick={() => void win.toggleMaximize()}
-          icon={maximized ? <Squares strokeWidth={3} /> : <Square strokeWidth={3} />}
-        />
-        <Dot
-          tone="red"
-          label="关闭"
-          onClick={() => void win.close()}
-          icon={<X strokeWidth={3} />}
-        />
-      </div>
+      {inApp && (
+        <div className="flex items-center gap-2 pr-3.5">
+          <Dot
+            tone="amber"
+            label="最小化"
+            onClick={() => void getCurrentWindow().minimize()}
+            icon={<Minus strokeWidth={3} />}
+          />
+          <Dot
+            tone="green"
+            label={maximized ? "还原窗口" : "最大化"}
+            onClick={() => void getCurrentWindow().toggleMaximize()}
+            icon={maximized ? <Squares strokeWidth={3} /> : <Square strokeWidth={3} />}
+          />
+          <Dot
+            tone="red"
+            label="关闭"
+            onClick={() => void getCurrentWindow().close()}
+            icon={<X strokeWidth={3} />}
+          />
+        </div>
+      )}
     </header>
   );
 }

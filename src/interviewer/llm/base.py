@@ -337,5 +337,71 @@ async def probe_chat(
         return ProbeResult(False, hint)
     except Exception as exc:  # 探测不该把异常抛给 UI
         return ProbeResult(False, f"{exc.__class__.__name__}: {str(exc)[:120]}")
-    finally:
-        await client.aclose()
+
+
+@dataclass(slots=True)
+class FetchedModels:
+    ok: bool
+    detail: str
+    models: list[str]
+
+
+async def fetch_models(
+    *,
+    provider_key: str,
+    base_url: str,
+    api_key: str,
+    timeout: float = 20.0,
+) -> FetchedModels:
+    """拉取 OpenAI 兼容端点的模型清单（GET /models）。
+
+    中转站大多自带这个接口，让用户一行行手抄模型名既容易错也没必要。
+    只列名字不产生推理消耗。错误翻译沿用 probe 的人话风格。
+    """
+    if not base_url.strip():
+        return FetchedModels(False, "还没填接入地址（base_url）", [])
+
+    headers = {"Content-Type": "application/json"}
+    if api_key.strip():
+        headers["Authorization"] = f"Bearer {api_key.strip()}"
+    started = time.perf_counter()
+    try:
+        async with httpx.AsyncClient(
+            base_url=base_url.strip().rstrip("/"),
+            headers=headers,
+            timeout=httpx.Timeout(timeout, connect=10.0),
+        ) as client:
+            response = await client.get("/models")
+    except httpx.HTTPError as exc:
+        return FetchedModels(False, f"连不上服务器，检查地址或网络：{str(exc)[:110]}", [])
+
+    if response.status_code >= 400:
+        hint = _STATUS_HINT.get(response.status_code)
+        if hint is None:
+            hint = f"请求失败 {response.status_code}"
+        return FetchedModels(False, hint, [])
+
+    try:
+        data = response.json()
+    except ValueError:
+        return FetchedModels(False, "返回的不是 JSON，这个地址可能不是 OpenAI 兼容接口", [])
+
+    # OpenAI 标准是 {data: [{id: ...}]}；个别中转直接给字符串数组
+    raw = data.get("data") if isinstance(data, dict) else data
+    if not isinstance(raw, list):
+        return FetchedModels(False, "返回结构里找不到模型清单，这个地址可能不是 OpenAI 兼容接口", [])
+    names: set[str] = set()
+    for item in raw:
+        if isinstance(item, dict) and isinstance(item.get("id"), str):
+            name = item["id"].strip()
+        elif isinstance(item, str):
+            name = item.strip()
+        else:
+            continue
+        if name:
+            names.add(name)
+    models = sorted(names)
+    if not models:
+        return FetchedModels(False, "端点没返回任何模型", [])
+    cost = int((time.perf_counter() - started) * 1000)
+    return FetchedModels(True, f"已获取 {len(models)} 个模型，往返 {cost} ms", models)

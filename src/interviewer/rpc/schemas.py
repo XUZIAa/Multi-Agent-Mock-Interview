@@ -125,6 +125,24 @@ class ProbeBody(BaseModel):
     base_url: str = Field(default="", max_length=500)
 
 
+class FetchModelsBody(BaseModel):
+    """拉取自定义端点的模型清单。
+
+    base_url 与 api_key 留空则用已保存的那份（同 ProbeBody 的优先级：界面草稿优先），
+    这样填完地址立刻就能拉，不必先保存。
+    """
+
+    provider_key: str = Field(min_length=1, max_length=60)
+    base_url: str = Field(default="", max_length=500)
+    api_key: str = ""
+
+
+class ModelsOutcome(BaseModel):
+    ok: bool
+    detail: str
+    models: list[str] = Field(default_factory=list)
+
+
 class ProbeOutcome(BaseModel):
     ok: bool
     detail: str
