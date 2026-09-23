@@ -129,7 +129,13 @@ class AppSettings(BaseModel):
         return catalog
 
     def chat_model(self, role: str) -> str:
-        return self.binding_for(role).model or self.chat_catalog(role).default_model
+        model = (self.binding_for(role).model or self.chat_catalog(role).default_model).strip()
+        if not model:
+            raise ConfigError(
+                f"角色 {role} 未绑定模型",
+                user_message="请在「设置 → 模型」为该角色选择模型并保存；填写模型列表不会自动绑定角色。",
+            )
+        return model
 
 
 class ConfigStore:

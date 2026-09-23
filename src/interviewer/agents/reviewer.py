@@ -148,10 +148,32 @@ class Reviewer(Agent):
         )
         progress("assembling", 85, "正在汇总报告")
 
-        score_raw = _unwrap(results[0], _ScoreRaw())
-        annotations_raw = _unwrap(results[1], _AnnotationsRaw())
-        rewrites_raw = _unwrap(results[2], _RewritesRaw())
-        mistakes_raw = _unwrap(results[3], _MistakesRaw())
+        # 检查关键子任务是否失败
+        failed_tasks = []
+        if isinstance(results[0], BaseException):
+            failed_tasks.append("能力评分")
+        if isinstance(results[1], BaseException):
+            failed_tasks.append("逐字稿批注")
+        if isinstance(results[2], BaseException):
+            failed_tasks.append("满分答案重构")
+        if isinstance(results[3], BaseException):
+            failed_tasks.append("错题提取")
+        
+        # 如果评分失败则整个复盘失败，其他子任务失败可降级
+        if isinstance(results[0], BaseException):
+            raise ProviderResponseError(
+                f"复盘生成失败：能力评分任务超时或模型异常。"
+                f"建议检查「设置 → 模型」中复盘模型的配置，或稍后重试。"
+            )
+        
+        score_raw = _unwrap(results[0], _ScoreRaw(), task_name="能力评分")
+        annotations_raw = _unwrap(results[1], _AnnotationsRaw(), task_name="逐字稿批注")
+        rewrites_raw = _unwrap(results[2], _RewritesRaw(), task_name="满分答案重构")
+        mistakes_raw = _unwrap(results[3], _MistakesRaw(), task_name="错题提取")
+        
+        # 记录降级信息
+        if failed_tasks:
+            logger.warning("复盘部分子任务失败，已降级: %s", ", ".join(failed_tasks))
 
         dimensions = _build_dimensions(score_raw.dimensions, has_coding=has_coding)
         # 总分以确定性加权为准，模型的整体判断只在维度缺失时兜底
@@ -273,9 +295,12 @@ class Reviewer(Agent):
         )
 
 
-def _unwrap[T](result: T | BaseException, fallback: T) -> T:
+def _unwrap[T](result: T | BaseException, fallback: T, *, task_name: str = "未知任务") -> T:
+    """解包并发子任务结果，失败时记录具体任务名称便于诊断。"""
     if isinstance(result, BaseException):
-        logger.error("复盘子任务失败: %s", result)
+        # 记录详细错误，包含任务名称，便于用户定位是哪个模型的问题
+        error_detail = f"{task_name}: {type(result).__name__}: {str(result)[:200]}"
+        logger.error("复盘子任务失败 - %s", error_detail)
         return fallback
     return result
 

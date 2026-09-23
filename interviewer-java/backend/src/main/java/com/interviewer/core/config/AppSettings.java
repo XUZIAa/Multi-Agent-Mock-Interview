@@ -100,6 +100,12 @@ public class AppSettings {
     @JsonIgnore
     public String chatModel(String role) {
         RoleBinding binding = bindingFor(role);
-        return binding.model().isEmpty() ? chatCatalog(role).defaultModel() : binding.model();
+        String model = (binding.model().isEmpty()
+                ? chatCatalog(role).defaultModel() : binding.model()).strip();
+        if (model.isEmpty()) {
+            throw new ConfigException("角色 " + role + " 未绑定模型",
+                    "请在「设置 → 模型」为该角色选择模型并保存；填写模型列表不会自动绑定角色。");
+        }
+        return model;
     }
 }

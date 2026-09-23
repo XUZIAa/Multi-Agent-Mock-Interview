@@ -107,6 +107,15 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
 
   const save = async () => {
     if (!settings) return;
+    const missing = catalog?.roles.find((role) => {
+      const binding = settings.roles[role.key];
+      const provider = catalog.chat.find((item) => item.key === binding?.provider);
+      return !(binding?.model || provider?.default_model || "").trim();
+    });
+    if (missing) {
+      toast.error(`请先为「${missing.label}」选择模型`);
+      return;
+    }
     setSaving(true);
     try {
       // 先落密钥再存配置：配置保存会触发模型客户端重建，届时应当已能取到新密钥
@@ -331,7 +340,7 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
                       </SelectContent>
                     </Select>
                     <Select
-                      value={modelOptions.includes(currentModel) ? currentModel : (modelOptions[0] ?? "")}
+                      value={currentModel}
                       onValueChange={(v) =>
                         setSettings({
                           ...settings,
@@ -343,9 +352,12 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
                       }
                     >
                       <SelectTrigger className="min-w-[210px] flex-1">
-                        <SelectValue />
+                        <SelectValue placeholder="请选择模型" />
                       </SelectTrigger>
                       <SelectContent>
+                        {currentModel && !modelOptions.includes(currentModel) && (
+                          <SelectItem value={currentModel}>{currentModel}</SelectItem>
+                        )}
                         {modelOptions.map((m) => (
                           <SelectItem key={m} value={m}>
                             {m}
@@ -359,7 +371,7 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
                       onClick={() =>
                         void runProbe(id, {
                           provider_key: binding.provider,
-                          model: binding.model || provider?.default_model || "",
+                          model: currentModel,
                         })
                       }
                     >
@@ -367,6 +379,9 @@ export function SettingsView({ onOpenAbout }: { onOpenAbout: () => void }) {
                       测试
                     </Button>
                   </div>
+                  {!currentModel && (
+                    <p className="text-destructive text-xs">请从列表中选择模型后保存，填写模型列表不会自动绑定角色。</p>
+                  )}
                   {state?.result && <ProbeLine result={state.result} />}
                 </div>
               );

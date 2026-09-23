@@ -483,7 +483,12 @@ class RealtimeClient:
             return
 
         if kind == proto.INPUT_TRANSCRIPT_FAILED:
+            # 识别失败时清理状态，避免导演永远等不到转写完成而卡住
+            self._candidate_buffer = ""
+            self._pending_speech = False
+            self._sink.on_candidate_speech(False)
             self._sink.on_error("语音识别失败，请确认麦克风输入正常", fatal=False)
+            logger.warning("语音识别失败，已清理待提交状态")
             return
 
         if kind == proto.RESPONSE_CREATED:

@@ -483,6 +483,19 @@ class InterviewEngine:
             return
         if self._candidate_speaking or self._closing:
             return
+        # 沉默施压：高分人设额外停顿再说话，营造压迫感
+        state = self._state
+        if state is not None:
+            silence_level = state.persona.pressure.silence_pressure
+            if silence_level >= 3:
+                # 3→1s, 5→2s, 7→3s, 10→4.5s
+                extra_delay = 0.5 + (silence_level - 3) * 0.5
+                try:
+                    await asyncio.sleep(extra_delay)
+                except asyncio.CancelledError:
+                    return
+                if self._candidate_speaking or self._closing:
+                    return
         self._turn_ready.set()
 
     def _cancel_turn_timer(self) -> None:
@@ -495,6 +508,9 @@ class InterviewEngine:
         if state is None:
             return
         settings = self._store.settings.orchestration
+        # 打断倾向为 0 时直接跳过，兑现"绝不打断"的承诺
+        if state.persona.pressure.interrupt_tendency == 0:
+            return
         if not state.can_interrupt(settings.interrupt_budget_per_phase):
             return
         threshold = policy.interrupt_threshold_ms(state, settings) / 1000
@@ -739,17 +755,28 @@ class InterviewEngine:
         await self.stop()
 
     async def _recover_turn(self) -> None:
-        """一轮失败不能让面试卡死，重锚后让面试官把话语权交回候选人。"""
+        """一轮失败不能让面试卡死，重锚后让面试官把话语权交回候选人。
+        
+        保留候选人的回答内容，避免因导演超时而丢失用户输入。
+        """
         state = self._state
         client = self._client
         if state is None or client is None:
             return
+        # 保存候选人回答，避免丢失
+        answer = " ".join(self._pending_answer).strip()
+        self._pending_answer.clear()
+        
         with contextlib.suppress(Exception):
             await self._maybe_reanchor(state, client, trigger="异常恢复", force=True)
+            brief = "用一句极短的话让候选人继续把刚才的回答说完"
+            if answer:
+                # 将候选人已说的内容传给面试官，让其有针对性地回应
+                brief = f"候选人刚才回答了：{answer[:150]}。用一句话确认你听到了，再问下一个问题"
             await client.send_directive(
                 anchor.directive_message(
                     intent=TurnIntent.ACKNOWLEDGE,
-                    brief="用一句极短的话让候选人继续把刚才的回答说完",
+                    brief=brief,
                 )
             )
 

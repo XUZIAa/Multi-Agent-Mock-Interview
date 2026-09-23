@@ -36,6 +36,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  BackendError,
   type InterviewState,
   type PersonaContract,
   type Schemas,
@@ -185,7 +186,9 @@ export function PrepareView({ onStart, bank }: Props) {
       setter({ ...IDLE, stage: "完成", percent: 100 });
       return result;
     } catch (err) {
-      const message = err instanceof Error ? err.message : "处理失败";
+      const message = err instanceof BackendError && err.detail
+        ? `${err.message}：${err.detail}`
+        : err instanceof Error ? err.message : "处理失败";
       // 真实原因要留在界面上，toast 会消失
       setter({ ...IDLE, error: message });
       toast.error(message);
