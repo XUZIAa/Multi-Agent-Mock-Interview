@@ -1,0 +1,398 @@
+{
+ "total": 14501,
+ "cases": [
+  {
+   "title": "Java 后端开发工程师",
+   "fragments": [
+    "熟悉 Java 并发编程",
+    "熟练使用 Spring Boot 与 MyBatis",
+    "Redis",
+    "MySQL"
+   ],
+   "in_scope": true,
+   "count": 28,
+   "hits": [
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring AOP 的原理、典型场景是什么？JDK 动态代理与 CGLIB 有什么区别？",
+     "n": 95
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring Bean 的生命周期是什么？",
+     "n": 26
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring Boot 自动配置（自动装配）的原理是什么？",
+     "n": 24
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring 如何解决循环依赖？哪些循环依赖无法解决？",
+     "n": 20
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "MySQL 与 Redis 有什么区别？分别适合存储什么数据？",
+     "n": 6
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "redis和mysql怎么保证数据的一致性？",
+     "n": 3
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "spring事务怎么实现的",
+     "n": 3
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "系统设计：设计一个秒杀系统，流量估算，Redis方案，数据库怎么处理超卖",
+     "n": 3
+    },
+    {
+     "c": "Redis 与缓存",
+     "q": "Redis 有哪些数据类型？它们的底层结构和典型场景分别是什么？",
+     "n": 131
+    },
+    {
+     "c": "Java 并发、JUC 与线程",
+     "q": "线程池的核心参数有哪些？分别有什么作用？",
+     "n": 107
+    },
+    {
+     "c": "Redis 与缓存",
+     "q": "缓存穿透、缓存击穿与缓存雪崩有什么区别？如何分别解决？",
+     "n": 105
+    },
+    {
+     "c": "Redis 与缓存",
+     "q": "如何保证缓存与数据库的一致性？",
+     "n": 104
+    },
+    {
+     "c": "Redis 与缓存",
+     "q": "如何用 Redis/Redisson 实现可靠分布式锁？如何处理误删、过期和自动续期？",
+     "n": 103
+    },
+    {
+     "c": "Java 集合、泛型与 Stream",
+     "q": "HashMap 的底层数据结构和 put/get 流程是什么？",
+     "n": 89
+    },
+    {
+     "c": "Java 集合、泛型与 Stream",
+     "q": "ConcurrentHashMap 的底层原理是什么？它如何保证线程安全？",
+     "n": 64
+    },
+    {
+     "c": "Java 集合、泛型与 Stream",
+     "q": "Java 集合框架的整体结构是什么？List、Set、Map 有什么区别？",
+     "n": 60
+    },
+    {
+     "c": "Java 并发、JUC 与线程",
+     "q": "进程、线程和协程有什么区别？",
+     "n": 56
+    },
+    {
+     "c": "Java 集合、泛型与 Stream",
+     "q": "ArrayList 与 LinkedList 有什么区别？分别适用于什么场景？",
+     "n": 56
+    },
+    {
+     "c": "Java 并发、JUC 与线程",
+     "q": "ThreadLocal 的底层原理是什么？为什么可能内存泄漏，如何避免？",
+     "n": 45
+    },
+    {
+     "c": "Java 并发、JUC 与线程",
+     "q": "Java 创建线程有哪些方式？",
+     "n": 44
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "Java 类加载的过程是什么？",
+     "n": 39
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "接口与抽象类有什么区别？分别适用于什么场景？",
+     "n": 29
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "Java 中 == 与 equals() 有什么区别？",
+     "n": 25
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "Java 注解的原理是什么？如何自定义注解？",
+     "n": 22
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "什么是 Java 反射？它的原理、使用场景和优缺点是什么？",
+     "n": 19
+    },
+    {
+     "c": "Elasticsearch 与搜索",
+     "q": "Elasticsearch 与 MySQL 的索引和存储结构有什么区别？",
+     "n": 13
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "Java 对象通常如何在 Eden、TLAB 和老年代中分配？",
+     "n": 13
+    },
+    {
+     "c": "ORM、MyBatis 与 JPA",
+     "q": "MyBatis 中 #{} 与 ${} 有什么区别？",
+     "n": 9
+    }
+   ]
+  },
+  {
+   "title": "Java 高级开发",
+   "fragments": [
+    "JVM 调优经验",
+    "Spring Cloud 微服务",
+    "Kafka"
+   ],
+   "in_scope": true,
+   "count": 19,
+   "hits": [
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring AOP 的原理、典型场景是什么？JDK 动态代理与 CGLIB 有什么区别？",
+     "n": 95
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring Bean 的生命周期是什么？",
+     "n": 26
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring Boot 自动配置（自动装配）的原理是什么？",
+     "n": 24
+    },
+    {
+     "c": "Spring、Spring Boot 与 Spring Cloud",
+     "q": "Spring 如何解决循环依赖？哪些循环依赖无法解决？",
+     "n": 20
+    },
+    {
+     "c": "分布式、微服务与一致性",
+     "q": "Dubbo 与 Spring Cloud 有什么区别？",
+     "n": 3
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "JVM 运行时数据区由哪些部分组成？",
+     "n": 42
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "JVM 垃圾回收的整体机制和触发条件是什么？",
+     "n": 42
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "什么是双亲委派机制？为什么需要它，如何打破？",
+     "n": 40
+    },
+    {
+     "c": "JVM、类加载与 GC",
+     "q": "Java 类加载的过程是什么？",
+     "n": 39
+    },
+    {
+     "c": "消息队列",
+     "q": "Kafka、RocketMQ 与 RabbitMQ 如何选型？",
+     "n": 36
+    },
+    {
+     "c": "消息队列",
+     "q": "Kafka 的核心架构和消息读写流程是什么？",
+     "n": 7
+    },
+    {
+     "c": "消息队列",
+     "q": "Kafka 为什么吞吐量高？",
+     "n": 6
+    },
+    {
+     "c": "消息队列",
+     "q": "Kafka 分区、副本和消费者组的作用是什么？",
+     "n": 5
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "spring事务怎么实现的",
+     "n": 3
+    },
+    {
+     "c": "Agent / 基础、架构与工作流",
+     "q": "Spring AI、LangChain4j 与 LangChain 如何选型？",
+     "n": 2
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "JDK、JRE 与 JVM 有什么区别？",
+     "n": 2
+    },
+    {
+     "c": "Java 基础、面向对象与反射",
+     "q": "Java 为什么能跨平台？JVM 在其中起什么作用？",
+     "n": 2
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "Spring 事务的传播机制",
+     "n": 2
+    },
+    {
+     "c": "MySQL、SQL 与数据库",
+     "q": "了解Spring事务吗？",
+     "n": 2
+    }
+   ]
+  },
+  {
+   "title": "大模型应用开发工程师",
+   "fragments": [
+    "熟悉 RAG 架构",
+    "LangChain",
+    "向量数据库",
+    "Prompt 工程"
+   ],
+   "in_scope": true,
+   "count": 11,
+   "hits": [
+    {
+     "c": "Agent / RAG、Embedding 与检索",
+     "q": "向量数据库与关系型数据库有什么区别？为什么需要它，如何选型？",
+     "n": 11
+    },
+    {
+     "c": "Agent / RAG、Embedding 与检索",
+     "q": "为什么要使用向量数据库",
+     "n": 2
+    },
+    {
+     "c": "Agent / RAG、Embedding 与检索",
+     "q": "RAG 的完整流程是什么？",
+     "n": 53
+    },
+    {
+     "c": "Agent / RAG、Embedding 与检索",
+     "q": "什么是 RAG？它与直接调用大模型有什么区别，解决了什么问题？",
+     "n": 50
+    },
+    {
+     "c": "Agent / Memory、Prompt 与上下文",
+     "q": "提示词工程有哪些常用方法？如何迭代 Prompt？",
+     "n": 29
+    },
+    {
+     "c": "Agent / Memory、Prompt 与上下文",
+     "q": "Agent 记忆系统如何存储、检索、更新和遗忘？",
+     "n": 27
+    },
+    {
+     "c": "Agent / Memory、Prompt 与上下文",
+     "q": "上下文超出窗口时如何压缩和保留关键信息？",
+     "n": 22
+    },
+    {
+     "c": "Agent / Memory、Prompt 与上下文",
+     "q": "什么是上下文工程？如何组织 Agent 上下文？",
+     "n": 12
+    },
+    {
+     "c": "Agent / 基础、架构与工作流",
+     "q": "LangChain 与 LangGraph 有什么区别？",
+     "n": 5
+    },
+    {
+     "c": "大模型基础、训练与推理",
+     "q": "RAG 与微调分别适用于什么场景？如何选择？",
+     "n": 5
+    },
+    {
+     "c": "Agent / 基础、架构与工作流",
+     "q": "Spring AI、LangChain4j 与 LangChain 如何选型？",
+     "n": 2
+    }
+   ]
+  },
+  {
+   "title": "测试开发工程师",
+   "fragments": [
+    "熟悉 Java",
+    "Spring Boot",
+    "MySQL",
+    "Redis"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  },
+  {
+   "title": "运维工程师",
+   "fragments": [
+    "Java",
+    "Spring",
+    "Linux",
+    "MySQL"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  },
+  {
+   "title": "前端开发工程师",
+   "fragments": [
+    "React",
+    "TypeScript",
+    "Vue"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  },
+  {
+   "title": "Python 开发工程师",
+   "fragments": [
+    "Django",
+    "MySQL",
+    "Redis"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  },
+  {
+   "title": "Java 开发",
+   "fragments": [
+    "Java"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  },
+  {
+   "title": "后端开发",
+   "fragments": [
+    "MySQL",
+    "Redis"
+   ],
+   "in_scope": false,
+   "count": 0,
+   "hits": []
+  }
+ ]
+}

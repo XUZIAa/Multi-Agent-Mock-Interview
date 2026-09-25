@@ -1,0 +1,82 @@
+{
+ "anchor_action_acknowledge": {
+  "chars": 42,
+  "sha256": "3e2cf09dd87ebeab6edbaa0cc17d9e29ce2eeb6070499de5a45d1286b6aa6dfb"
+ },
+ "anchor_action_ask_new": {
+  "chars": 43,
+  "sha256": "a0afc857973d2c888b7a4b8b6fd47be0cfc6fc6cb55389a9d2a3f6fb7c9caa85"
+ },
+ "anchor_action_boundary_test": {
+  "chars": 27,
+  "sha256": "f97e31c2280b4c37b47c8b0395e6d0bbcd0d59f35703424635d5fb6ac91f15a1"
+ },
+ "anchor_action_close": {
+  "chars": 32,
+  "sha256": "a47e2a74c2564e9ef9d761460956cf07612c1893d6050f3a139d7562fe57ea5c"
+ },
+ "anchor_action_coding_handoff": {
+  "chars": 33,
+  "sha256": "ff9d58c86bdb8de13698a87cc0dc2d0cdbaee965cce8c5edaa8080a0bdafb070"
+ },
+ "anchor_action_follow_up": {
+  "chars": 38,
+  "sha256": "71a1389670cbb3ab148aa6378cefffab9ad1d04923be296c91d76b1f9ecfe616"
+ },
+ "anchor_action_interrupt": {
+  "chars": 42,
+  "sha256": "98d38cf674987ff1fbba981edd151bf97d772d8129bfb119691824af86393deb"
+ },
+ "anchor_action_pressure": {
+  "chars": 29,
+  "sha256": "050bf75b019ecde2fc78b32e80d0c0fb38a381a7d5f51e28cbb163f9de23fd10"
+ },
+ "anchor_action_star_probe": {
+  "chars": 33,
+  "sha256": "8cb26bdd553de40eac7dcab4ce351a8e87953e71aacf5114d66417ff0b1d1749"
+ },
+ "anchor_action_transition": {
+  "chars": 23,
+  "sha256": "156e74c88f7095d6e5381cec72312845fdb01459ad76d59a05156239e1360e1d"
+ },
+ "anchor_phase_behavioral": {
+  "chars": 40,
+  "sha256": "8cd32a10c91cab177234303421111a7a9341e9f5fa45d0a558991de68ff7b8e0"
+ },
+ "anchor_phase_candidate_qa": {
+  "chars": 70,
+  "sha256": "5b1619ee135d205232729590a8369b59073e7f15da832cd87cdb2919f2356e82"
+ },
+ "anchor_phase_closing": {
+  "chars": 37,
+  "sha256": "c216eae6d49642374863e116a5e99cf519c172167c0d21cfd1d7973b134223f0"
+ },
+ "anchor_phase_coding": {
+  "chars": 76,
+  "sha256": "1e1cd26555f4ae9d1a7ed07cbeb35f727bb0c7ad37969c9dcf57af83d6597cb7"
+ },
+ "anchor_phase_finished": {
+  "chars": 12,
+  "sha256": "869d7562b2b4690de087ecfc13bb067cfb2c98018537ae877dcab325e830dbe5"
+ },
+ "anchor_phase_resume_deep_dive": {
+  "chars": 40,
+  "sha256": "9f1f6a8a58812ff1fecebce3e9685c6dedcdaeac5752da47ca3a730a996e3bfe"
+ },
+ "anchor_phase_stress": {
+  "chars": 45,
+  "sha256": "1d593cb52fd107c53b95ccc8224c568d637decab719cd385824ae25956ddea49"
+ },
+ "anchor_phase_tech_depth": {
+  "chars": 43,
+  "sha256": "8314d436088b61a01644bbe9399e82f8015b2eec6c154a122e274d965a790c7b"
+ },
+ "anchor_phase_warmup": {
+  "chars": 77,
+  "sha256": "84175f6bb480cb4b3366bda8961655956278e3ae14e842380e917367ea561bca"
+ },
+ "anchor_workflow": {
+  "chars": 941,
+  "sha256": "9f5f2ba9858abda4a41ac6314f862b8e6f655f89e99de723246204418d688f69"
+ }
+}

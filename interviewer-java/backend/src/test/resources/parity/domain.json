@@ -1,0 +1,3985 @@
+{
+ "plans": [
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 297500,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 212500,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 297500,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 212500,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 536842,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 383458,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 99699,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 426268,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 304477,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 79164,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 210089,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 729473,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 521052,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 135473,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 579223,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 413731,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 107570,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 285474,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 935884,
+     "min_questions": 5
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 668488,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 173807,
+     "min_questions": 1
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 300819,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "暴躁 CTO",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 765947,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 547105,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 142247,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 377502,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 246197,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 361250,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 148750,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 361250,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 148750,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 368936,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 151914,
+     "min_questions": 1
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 499148,
+     "min_questions": 3
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 298965,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 123103,
+     "min_questions": 1
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 404482,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 193448,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 501319,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 206425,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 678255,
+     "min_questions": 4
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 406241,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 167275,
+     "min_questions": 1
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 549620,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 262862,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 721285,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 297000,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 975857,
+     "min_questions": 5
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 84857,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "温和 HR",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 589050,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 242550,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 796950,
+     "min_questions": 4
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 381150,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 69300,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 336136,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 173863,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 336136,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 173863,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 484918,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 250819,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 284262,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 410833,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 212500,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 240833,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 155833,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 658918,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 340819,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 386262,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 558250,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 288750,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 327250,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 211750,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 873782,
+     "min_questions": 5
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 451956,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 512217,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 241043,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "刁钻业务 Leader",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 753637,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 389812,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 441787,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 285862,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 207900,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 279285,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 230714,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 279285,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 230714,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 373566,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 308598,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 337834,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 307068,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 253664,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 277696,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 181570,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 507611,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 419331,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 459057,
+     "min_questions": 3
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 417251,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 344685,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 377340,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 246722,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 705265,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 582610,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 637805,
+     "min_questions": 4
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 153318,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "外企 Manager",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 587432,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 485270,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 531243,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 347351,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 127702,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 197045,
+     "min_questions": 1
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 312954,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 197045,
+     "min_questions": 1
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 312954,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 358264,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 569008,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 92727,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 248424,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 394555,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 64297,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 312722,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 486818,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 773181,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 126000,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 337564,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 536131,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 87369,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 424934,
+     "min_questions": 3
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 643770,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 1022459,
+     "min_questions": 6
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 166622,
+     "min_questions": 1
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 246147,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "抠原理学术派",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 463211,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 735688,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 119889,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 583100,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 177110,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 255000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 255000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 255000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 255000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 408778,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 408778,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 202442,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 315929,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 315929,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 156460,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 231681,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 555458,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 555458,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 275083,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 429292,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 429292,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 212601,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 314814,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 760609,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 760609,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 376682,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 181097,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "沉默观察者",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 599711,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 599711,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 297000,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 439788,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 142788,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 238000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 272000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 238000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 272000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 416731,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 476264,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 127003,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 286363,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 327272,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 87272,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 319090,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 566264,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 647159,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 172575,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 389117,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 444705,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 118588,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 433588,
+     "min_questions": 3
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 747585,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 854383,
+     "min_questions": 5
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 227835,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 249195,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "连环快枪手",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 533728,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 609975,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 162660,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 594726,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 177909,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 234600,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 275400,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 234600,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 275400,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 388410,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 455960,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 175629,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 293984,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 345112,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 132932,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 247969,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 527781,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 619569,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 238649,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 399473,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 468947,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 180631,
+     "min_questions": 1
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 336947,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 720135,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 845376,
+     "min_questions": 5
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 325626,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 187861,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "大厂技术面试官",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 557307,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 654230,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 252000,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 470076,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 145384,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 327407,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 182592,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 327407,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 182592,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 442737,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 246911,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 330350,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 383791,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 214037,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 286367,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 135803,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 601602,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 335509,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 448888,
+     "min_questions": 3
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 521505,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 290839,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 389123,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 184532,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 839347,
+     "min_questions": 5
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 468097,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 626282,
+     "min_questions": 4
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 145271,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "制造业技术负责人",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 734429,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 409585,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 547997,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 259875,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 127112,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 300000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 210000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 300000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 210000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 364285,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 255000,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 400714,
+     "min_questions": 3
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 310030,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 217021,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 341033,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 151914,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 495000,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 346500,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 544500,
+     "min_questions": 3
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 421276,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 294893,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 463404,
+     "min_questions": 3
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 206425,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 704745,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 493322,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 775220,
+     "min_questions": 4
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 105711,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "国企信息化主管",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 604360,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 423052,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 664796,
+     "min_questions": 4
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 296136,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 90654,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 10,
+   "coding": false,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 238000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 272000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 10,
+   "coding": true,
+   "total_ms": 600000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 54000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 238000,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 272000,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 36000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 36000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 20,
+   "coding": false,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 354635,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 405298,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 260066,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 20,
+   "coding": true,
+   "total_ms": 1200000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 108000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 281842,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 322105,
+     "min_questions": 2
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 206684,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 209368,
+     "min_questions": 2
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 72000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 72000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 30,
+   "coding": false,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 481887,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 550728,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 353384,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 30,
+   "coding": true,
+   "total_ms": 1800000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 162000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 382973,
+     "min_questions": 2
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 437684,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 280847,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 284494,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 144000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 108000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 108000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 45,
+   "coding": false,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 642989,
+     "min_questions": 4
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 734845,
+     "min_questions": 4
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 471525,
+     "min_questions": 3
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 229639,
+     "min_questions": 2
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  },
+  {
+   "persona": "金融科技技术专家",
+   "minutes": 45,
+   "coding": true,
+   "total_ms": 2700000,
+   "slots": [
+    {
+     "phase": "warmup",
+     "budget_ms": 243000,
+     "min_questions": 1
+    },
+    {
+     "phase": "resume_deep_dive",
+     "budget_ms": 522862,
+     "min_questions": 3
+    },
+    {
+     "phase": "tech_depth",
+     "budget_ms": 597556,
+     "min_questions": 3
+    },
+    {
+     "phase": "behavioral",
+     "budget_ms": 383432,
+     "min_questions": 2
+    },
+    {
+     "phase": "coding",
+     "budget_ms": 388411,
+     "min_questions": 2
+    },
+    {
+     "phase": "stress",
+     "budget_ms": 186736,
+     "min_questions": 1
+    },
+    {
+     "phase": "candidate_qa",
+     "budget_ms": 216000,
+     "min_questions": 1
+    },
+    {
+     "phase": "closing",
+     "budget_ms": 162000,
+     "min_questions": 1
+    }
+   ],
+   "closing_ms": 162000
+  }
+ ],
+ "ladder": [
+  {
+   "seq": [
+    0.9,
+    0.9,
+    0.9,
+    0.9,
+    0.9,
+    0.9
+   ],
+   "steps": [
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 1,
+     "attempts": 1,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 2,
+     "attempts": 2,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 3,
+     "summary": "缓存/Redis：最深触及 D2，问过 2 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 3,
+     "attempts": 3,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D3，问过 3 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 4,
+     "attempts": 4,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 4 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "switch",
+     "depth_reached": 4,
+     "attempts": 5,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 5 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "switch",
+     "depth_reached": 4,
+     "attempts": 6,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 6 次，最佳表现 0.90"
+    }
+   ]
+  },
+  {
+   "seq": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "steps": [
+    {
+     "q": 0.5,
+     "action": "sidestep",
+     "depth_reached": 0,
+     "attempts": 1,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.50"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 2,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 2 次，最佳表现 0.50"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 3,
+     "attempts_at_depth": 3,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 3 次，最佳表现 0.50"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 4,
+     "attempts_at_depth": 4,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 4 次，最佳表现 0.50"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 5,
+     "attempts_at_depth": 5,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 5 次，最佳表现 0.50"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 6,
+     "attempts_at_depth": 6,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 6 次，最佳表现 0.50"
+    }
+   ]
+  },
+  {
+   "seq": [
+    0.1,
+    0.1,
+    0.1,
+    0.1
+   ],
+   "steps": [
+    {
+     "q": 0.1,
+     "action": "sidestep",
+     "depth_reached": 0,
+     "attempts": 1,
+     "attempts_at_depth": 1,
+     "low_streak": 1,
+     "best": 0.1,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.10"
+    },
+    {
+     "q": 0.1,
+     "action": "abandon",
+     "depth_reached": 0,
+     "attempts": 2,
+     "attempts_at_depth": 2,
+     "low_streak": 2,
+     "best": 0.1,
+     "exhausted": true,
+     "abandoned_at": 1,
+     "next_depth": 1,
+     "summary": "缓存/Redis：已放弃深挖，问过 2 次，最佳表现 0.10"
+    },
+    {
+     "q": 0.1,
+     "action": "abandon",
+     "depth_reached": 0,
+     "attempts": 3,
+     "attempts_at_depth": 3,
+     "low_streak": 3,
+     "best": 0.1,
+     "exhausted": true,
+     "abandoned_at": 1,
+     "next_depth": 1,
+     "summary": "缓存/Redis：已放弃深挖，问过 3 次，最佳表现 0.10"
+    },
+    {
+     "q": 0.1,
+     "action": "abandon",
+     "depth_reached": 0,
+     "attempts": 4,
+     "attempts_at_depth": 4,
+     "low_streak": 4,
+     "best": 0.1,
+     "exhausted": true,
+     "abandoned_at": 1,
+     "next_depth": 1,
+     "summary": "缓存/Redis：已放弃深挖，问过 4 次，最佳表现 0.10"
+    }
+   ]
+  },
+  {
+   "seq": [
+    0.9,
+    0.5,
+    0.5,
+    0.9,
+    0.2,
+    0.2
+   ],
+   "steps": [
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 1,
+     "attempts": 1,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.5,
+     "action": "sidestep",
+     "depth_reached": 1,
+     "attempts": 2,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 2 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.5,
+     "action": "switch",
+     "depth_reached": 1,
+     "attempts": 3,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 3 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.9,
+     "action": "deepen",
+     "depth_reached": 2,
+     "attempts": 4,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 3,
+     "summary": "缓存/Redis：最深触及 D2，问过 4 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.2,
+     "action": "sidestep",
+     "depth_reached": 2,
+     "attempts": 5,
+     "attempts_at_depth": 1,
+     "low_streak": 1,
+     "best": 0.9,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 3,
+     "summary": "缓存/Redis：最深触及 D2，问过 5 次，最佳表现 0.90"
+    },
+    {
+     "q": 0.2,
+     "action": "abandon",
+     "depth_reached": 2,
+     "attempts": 6,
+     "attempts_at_depth": 2,
+     "low_streak": 2,
+     "best": 0.9,
+     "exhausted": true,
+     "abandoned_at": 2,
+     "next_depth": 3,
+     "summary": "缓存/Redis：已放弃深挖，问过 6 次，最佳表现 0.90"
+    }
+   ]
+  },
+  {
+   "seq": [
+    0.65,
+    0.64,
+    0.4,
+    0.39,
+    0.66,
+    0.66,
+    0.66,
+    0.66,
+    0.66
+   ],
+   "steps": [
+    {
+     "q": 0.65,
+     "action": "deepen",
+     "depth_reached": 1,
+     "attempts": 1,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.65,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.65"
+    },
+    {
+     "q": 0.64,
+     "action": "sidestep",
+     "depth_reached": 1,
+     "attempts": 2,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.65,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 2 次，最佳表现 0.65"
+    },
+    {
+     "q": 0.4,
+     "action": "switch",
+     "depth_reached": 1,
+     "attempts": 3,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.65,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 3 次，最佳表现 0.65"
+    },
+    {
+     "q": 0.39,
+     "action": "sidestep",
+     "depth_reached": 1,
+     "attempts": 4,
+     "attempts_at_depth": 3,
+     "low_streak": 1,
+     "best": 0.65,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 4 次，最佳表现 0.65"
+    },
+    {
+     "q": 0.66,
+     "action": "deepen",
+     "depth_reached": 2,
+     "attempts": 5,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.66,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 3,
+     "summary": "缓存/Redis：最深触及 D2，问过 5 次，最佳表现 0.66"
+    },
+    {
+     "q": 0.66,
+     "action": "deepen",
+     "depth_reached": 3,
+     "attempts": 6,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.66,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D3，问过 6 次，最佳表现 0.66"
+    },
+    {
+     "q": 0.66,
+     "action": "deepen",
+     "depth_reached": 4,
+     "attempts": 7,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.66,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 7 次，最佳表现 0.66"
+    },
+    {
+     "q": 0.66,
+     "action": "switch",
+     "depth_reached": 4,
+     "attempts": 8,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.66,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 8 次，最佳表现 0.66"
+    },
+    {
+     "q": 0.66,
+     "action": "switch",
+     "depth_reached": 4,
+     "attempts": 9,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.66,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 4,
+     "summary": "缓存/Redis：最深触及 D4，问过 9 次，最佳表现 0.66"
+    }
+   ]
+  },
+  {
+   "seq": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "steps": [
+    {
+     "q": null,
+     "action": "sidestep",
+     "depth_reached": 0,
+     "attempts": 1,
+     "attempts_at_depth": 1,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.50"
+    },
+    {
+     "q": null,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 2,
+     "attempts_at_depth": 2,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 2 次，最佳表现 0.50"
+    },
+    {
+     "q": null,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 3,
+     "attempts_at_depth": 3,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 3 次，最佳表现 0.50"
+    },
+    {
+     "q": null,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 4,
+     "attempts_at_depth": 4,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 4 次，最佳表现 0.50"
+    },
+    {
+     "q": null,
+     "action": "switch",
+     "depth_reached": 0,
+     "attempts": 5,
+     "attempts_at_depth": 5,
+     "low_streak": 0,
+     "best": 0.5,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 1,
+     "summary": "缓存/Redis：最深触及 D1，问过 5 次，最佳表现 0.50"
+    }
+   ]
+  },
+  {
+   "seq": [
+    0.7,
+    0.3,
+    0.3,
+    0.7
+   ],
+   "steps": [
+    {
+     "q": 0.7,
+     "action": "deepen",
+     "depth_reached": 1,
+     "attempts": 1,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.7,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 1 次，最佳表现 0.70"
+    },
+    {
+     "q": 0.3,
+     "action": "sidestep",
+     "depth_reached": 1,
+     "attempts": 2,
+     "attempts_at_depth": 1,
+     "low_streak": 1,
+     "best": 0.7,
+     "exhausted": false,
+     "abandoned_at": 0,
+     "next_depth": 2,
+     "summary": "缓存/Redis：最深触及 D1，问过 2 次，最佳表现 0.70"
+    },
+    {
+     "q": 0.3,
+     "action": "abandon",
+     "depth_reached": 1,
+     "attempts": 3,
+     "attempts_at_depth": 2,
+     "low_streak": 2,
+     "best": 0.7,
+     "exhausted": true,
+     "abandoned_at": 1,
+     "next_depth": 2,
+     "summary": "缓存/Redis：已放弃深挖，问过 3 次，最佳表现 0.70"
+    },
+    {
+     "q": 0.7,
+     "action": "deepen",
+     "depth_reached": 2,
+     "attempts": 4,
+     "attempts_at_depth": 0,
+     "low_streak": 0,
+     "best": 0.7,
+     "exhausted": true,
+     "abandoned_at": 1,
+     "next_depth": 3,
+     "summary": "缓存/Redis：已放弃深挖，问过 4 次，最佳表现 0.70"
+    }
+   ]
+  }
+ ]
+}

@@ -1609,6 +1609,48 @@
     }
    }
   },
+  "/config/models": {
+   "post": {
+    "tags": [
+     "config"
+    ],
+    "summary": "Config Fetch Models",
+    "description": "拉取自定义端点的模型清单，免去用户手抄。\n\n地址与 Key 的优先级同 probe：界面草稿 > 已保存配置 > catalog 默认，\n填完地址立刻就能拉，不必先保存。",
+    "operationId": "config_fetch_models_config_models_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/FetchModelsBody"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ModelsOutcome"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/config": {
    "get": {
     "tags": [
@@ -2552,6 +2594,33 @@
      "save_audio"
     ]
    },
+   "FetchModelsBody": {
+    "properties": {
+     "provider_key": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Provider Key"
+     },
+     "base_url": {
+      "type": "string",
+      "maxLength": 500,
+      "title": "Base Url",
+      "default": ""
+     },
+     "api_key": {
+      "type": "string",
+      "title": "Api Key",
+      "default": ""
+     }
+    },
+    "type": "object",
+    "required": [
+     "provider_key"
+    ],
+    "title": "FetchModelsBody",
+    "description": "拉取自定义端点的模型清单。\n\nbase_url 与 api_key 留空则用已保存的那份（同 ProbeBody 的优先级：界面草稿优先），\n这样填完地址立刻就能拉，不必先保存。"
+   },
    "GapReport": {
     "properties": {
      "match_score": {
@@ -3344,6 +3413,32 @@
     ],
     "title": "ModelOption"
    },
+   "ModelsOutcome": {
+    "properties": {
+     "ok": {
+      "type": "boolean",
+      "title": "Ok"
+     },
+     "detail": {
+      "type": "string",
+      "title": "Detail"
+     },
+     "models": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Models"
+     }
+    },
+    "type": "object",
+    "required": [
+     "ok",
+     "detail",
+     "models"
+    ],
+    "title": "ModelsOutcome"
+   },
    "MuteBody": {
     "properties": {
      "muted": {
@@ -3389,10 +3484,10 @@
      },
      "director_timeout_ms": {
       "type": "integer",
-      "maximum": 30000.0,
+      "maximum": 60000.0,
       "minimum": 2000.0,
       "title": "Director Timeout Ms",
-      "default": 9000
+      "default": 20000
      },
      "guard_timeout_ms": {
       "type": "integer",
@@ -3642,6 +3737,12 @@
       "type": "boolean",
       "title": "Realtime",
       "default": false
+     },
+     "base_url": {
+      "type": "string",
+      "maxLength": 500,
+      "title": "Base Url",
+      "default": ""
      }
     },
     "type": "object",
@@ -3649,7 +3750,7 @@
      "provider_key"
     ],
     "title": "ProbeBody",
-    "description": "探测某个供应商的密钥与模型是否真的能用。\n\n密钥留空则用已保存的那份，这样用户不必为了测试重新粘一遍。"
+    "description": "探测某个供应商的密钥与模型是否真的能用。\n\n密钥留空则用已保存的那份，这样用户不必为了测试重新粘一遍。\nbase_url 同理：留空用已保存的自定义端点地址；前端把界面上的草稿传过来，\n测的就是用户眼前看到的那份配置，而不是上次保存的旧值。"
    },
    "ProbeOutcome": {
     "properties": {

@@ -1,0 +1,154 @@
+[
+ {
+  "raw": {
+   "requirement": "Redis",
+   "count": "3 年",
+   "ratio": "0.75 分",
+   "flag": true,
+   "opt_id": null,
+   "tags": "单个字符串",
+   "items": "字符串项",
+   "note": {
+    "a": "x",
+    "b": "y"
+   }
+  },
+  "parsed": {
+   "skill": "Redis",
+   "count": 3,
+   "ratio": 0.75,
+   "flag": true,
+   "opt_id": null,
+   "tags": [
+    "单个字符串"
+   ],
+   "items": [
+    {
+     "name": "字符串项",
+     "score": 0.0
+    }
+   ],
+   "note": "x · y"
+  }
+ },
+ {
+  "raw": {
+   "name": "MySQL",
+   "items": [
+    {
+     "title": "t1",
+     "score": "9分"
+    },
+    "纯字符串",
+    5
+   ],
+   "tags": [
+    "a",
+    "",
+    {
+     "k": "v"
+    }
+   ],
+   "count": [
+    0,
+    0,
+    7
+   ]
+  },
+  "parsed": {
+   "skill": "MySQL",
+   "count": 7,
+   "ratio": 0.0,
+   "flag": false,
+   "opt_id": null,
+   "tags": [
+    "a",
+    "v"
+   ],
+   "items": [
+    {
+     "name": "t1",
+     "score": 9.0
+    },
+    {
+     "name": "纯字符串",
+     "score": 0.0
+    },
+    {
+     "name": "5",
+     "score": 0.0
+    }
+   ],
+   "note": ""
+  }
+ },
+ {
+  "raw": {
+   "skill": [
+    "多",
+    "段"
+   ],
+   "opt_id": "12",
+   "ratio": [
+    0,
+    3.5
+   ],
+   "note": null
+  },
+  "parsed": {
+   "skill": "多；段",
+   "count": 0,
+   "ratio": 3.5,
+   "flag": false,
+   "opt_id": 12,
+   "tags": [],
+   "items": [],
+   "note": ""
+  }
+ },
+ {
+  "raw": {},
+  "parsed": {
+   "skill": "",
+   "count": 0,
+   "ratio": 0.0,
+   "flag": false,
+   "opt_id": null,
+   "tags": [],
+   "items": [],
+   "note": ""
+  }
+ },
+ {
+  "raw": {
+   "skill": {
+    "x": "a",
+    "y": [
+     "b"
+    ]
+   },
+   "items": [
+    {
+     "name": null,
+     "score": null
+    }
+   ],
+   "flag": true
+  },
+  "parsed": {
+   "skill": "a",
+   "count": 0,
+   "ratio": 0.0,
+   "flag": true,
+   "opt_id": null,
+   "tags": [],
+   "items": [
+    {
+     "name": "",
+     "score": 0.0
+    }
+   ],
+   "note": ""
+  }
+ }
+]

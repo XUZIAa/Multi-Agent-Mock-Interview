@@ -114,12 +114,33 @@ class ProbeBody(BaseModel):
     """探测某个供应商的密钥与模型是否真的能用。
 
     密钥留空则用已保存的那份，这样用户不必为了测试重新粘一遍。
+    base_url 同理：留空用已保存的自定义端点地址；前端把界面上的草稿传过来，
+    测的就是用户眼前看到的那份配置，而不是上次保存的旧值。
     """
 
     provider_key: str = Field(min_length=1, max_length=60)
     model: str = Field(default="", max_length=120)
     api_key: str = ""
     realtime: bool = False
+    base_url: str = Field(default="", max_length=500)
+
+
+class FetchModelsBody(BaseModel):
+    """拉取自定义端点的模型清单。
+
+    base_url 与 api_key 留空则用已保存的那份（同 ProbeBody 的优先级：界面草稿优先），
+    这样填完地址立刻就能拉，不必先保存。
+    """
+
+    provider_key: str = Field(min_length=1, max_length=60)
+    base_url: str = Field(default="", max_length=500)
+    api_key: str = ""
+
+
+class ModelsOutcome(BaseModel):
+    ok: bool
+    detail: str
+    models: list[str] = Field(default_factory=list)
 
 
 class ProbeOutcome(BaseModel):

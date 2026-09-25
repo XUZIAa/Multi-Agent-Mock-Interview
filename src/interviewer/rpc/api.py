@@ -30,7 +30,7 @@ from ..domain.company import level_expectation
 from ..domain.interview import InterviewState, TurnRecord
 from ..domain.persona import PersonaContract
 from ..domain.review import ReviewReport
-from ..llm.base import probe_chat
+from ..llm.base import fetch_models, probe_chat
 from ..orchestration.recovery import InterruptedSession
 from ..realtime.audio_io import input_devices, output_devices
 from ..realtime.probe import probe_realtime
@@ -43,6 +43,7 @@ from .schemas import (
     Catalog,
     ComposeChallengeBody,
     DiagnoseBody,
+    FetchModelsBody,
     GenerateReviewBody,
     HintBody,
     IngestJobTextBody,
@@ -50,6 +51,7 @@ from .schemas import (
     JudgeCodeBody,
     MistakeCounts,
     ModelOption,
+    ModelsOutcome,
     MuteBody,
     Ok,
     ProbeBody,
@@ -485,7 +487,15 @@ async def config_probe(request: Request, body: ProbeBody) -> ProbeOutcome:
     if chat is None:
         raise HTTPException(status_code=404, detail=f"未知的文本供应商 {body.provider_key}")
     settings = ctx.config.settings
-    base_url = chat.base_url or settings.custom_chat.base_url
+    if body.provider_key in ("custom", "openai_compat"):
+        # 与 AppSettings.chat_catalog 保持同一优先级：界面草稿 > 已保存配置 > catalog 默认。
+        # 此前写的是 chat.base_url or settings.custom_chat.base_url，custom 会被
+        # catalog 里的 Ollama 默认地址抢先，探测到的和运行时用的不是同一个端点
+        base_url = body.base_url.strip() or settings.custom_chat.base_url.strip() or chat.base_url
+        if not base_url:
+            return ProbeOutcome(ok=False, detail="还没填接入地址（base_url）", latency_ms=0)
+    else:
+        base_url = chat.base_url
     result = await probe_chat(
         provider_key=chat.key,
         base_url=base_url,
@@ -493,6 +503,32 @@ async def config_probe(request: Request, body: ProbeBody) -> ProbeOutcome:
         model=body.model or chat.default_model,
     )
     return ProbeOutcome(ok=result.ok, detail=result.detail, latency_ms=result.latency_ms)
+
+
+@router.post("/config/models", response_model=ModelsOutcome, tags=["config"])
+async def config_fetch_models(request: Request, body: FetchModelsBody) -> ModelsOutcome:
+    """拉取自定义端点的模型清单，免去用户手抄。
+
+    地址与 Key 的优先级同 probe：界面草稿 > 已保存配置 > catalog 默认，
+    填完地址立刻就能拉，不必先保存。
+    """
+    chat = CHAT_PROVIDERS.get(body.provider_key)
+    if chat is None:
+        raise HTTPException(status_code=404, detail=f"未知的文本供应商 {body.provider_key}")
+    if body.provider_key not in ("custom", "openai_compat"):
+        return ModelsOutcome(ok=False, detail="只有自定义端点支持拉取模型清单", models=[])
+    ctx = _ctx(request)
+    base_url = (
+        body.base_url.strip()
+        or ctx.config.settings.custom_chat.base_url.strip()
+        or chat.base_url
+    )
+    result = await fetch_models(
+        provider_key=chat.key,
+        base_url=base_url,
+        api_key=body.api_key or ctx.config.get_api_key(chat.key),
+    )
+    return ModelsOutcome(ok=result.ok, detail=result.detail, models=result.models)
 
 
 # ==================================================================
